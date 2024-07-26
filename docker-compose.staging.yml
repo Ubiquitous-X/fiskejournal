@@ -1,0 +1,101 @@
+services:
+
+  db:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-postgres
+    container_name: database
+    ports:
+     - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /home/ubiquitous/db_backups:/var/lib/postgresql/db_backups
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_INITDB_ARGS: "--locale=sv_SE.UTF-8"
+      TZ: Europe/Stockholm
+    env_file:
+      - .env
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - static_volume:/app/staticfiles
+    environment:
+      - DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}
+      - DJANGO_ENVIRONMENT=production
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+      - frontend-build:/app/dist
+    restart: "no"
+    env_file:
+      - .env
+    command: npm run build
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  celery:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-backend
+    container_name: celery
+    command: celery -A core worker --concurrency=1 --loglevel=info
+    depends_on:
+      - backend
+      - redis
+    volumes:
+      - ./backend:/app
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+    env_file:
+      - .env
+    restart: on-failure
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /home/ubiquitous/nginx/conf:/etc/nginx/conf.d
+      - static_volume:/app/staticfiles
+      - ./frontend/dist:/usr/share/nginx/html
+      - frontend-build:/usr/share/nginx/html
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  frontend-build:

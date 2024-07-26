@@ -1,0 +1,137 @@
+services:
+
+  db:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-postgres
+    container_name: database
+    ports:
+     - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /home/ubiquitous/db_backups:/var/lib/postgresql/db_backups
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_INITDB_ARGS=--locale=sv_SE.UTF-8
+      - TZ=Europe/Stockholm
+
+  backend:
+    image: ubiquitous1/ubiquitous:backend-latest
+    container_name: backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - static_volume:/app/staticfiles
+    environment:
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}
+      - DJANGO_ENVIRONMENT=production
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+    depends_on:
+      - db
+    restart: on-failure
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  frontend:
+    image: ubiquitous1/ubiquitous:frontend-latest
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+      - frontend-build:/app/dist
+    environment:
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
+      - VITE_WS_BASE_URL=${VITE_WS_BASE_URL}
+      - VITE_ENV=${VITE_ENV}
+    restart: "no"
+    command: npm run build
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  celery:
+    image: ubiquitous1/ubiquitous:backend-latest
+    container_name: celery
+    command: celery -A core worker --concurrency=1 --loglevel=info
+    depends_on:
+      - backend
+      - redis
+    volumes:
+      - ./backend:/app
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - SECRET_KEY=${SECRET_KEY}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_REGION_NAME=${AWS_S3_REGION_NAME}
+      - AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}
+      - AWS_UPLOAD_DIRECTORY=${AWS_UPLOAD_DIRECTORY}
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEONAMES_USERNAME=${GEONAMES_USERNAME}
+    restart: on-failure
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/ubiquitous/nginx/conf:/etc/nginx/conf.d
+      - /home/ubiquitous/nginx/certbot/conf:/etc/letsencrypt
+      - /home/ubiquitous/nginx/certbot/www:/var/www/certbot
+      - /home/ubiquitous/nginx/logs:/var/log/nginx
+      - frontend-build:/usr/share/nginx/html
+      - static_volume:/app/staticfiles
+    depends_on:
+      - frontend
+      - backend
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - /home/ubiquitous/nginx/certbot/conf:/etc/letsencrypt
+      - /home/ubiquitous/nginx/certbot/www:/var/www/certbot
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  frontend-build:

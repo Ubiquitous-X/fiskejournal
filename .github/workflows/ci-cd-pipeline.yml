@@ -1,0 +1,64 @@
+name: Build, Push and Deploy Fiskejournal
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker images
+      run: |
+        docker build -t ${{ secrets.DOCKER_REPO }}:backend-latest -f backend/Dockerfile-backend ./backend
+        docker build -t ${{ secrets.DOCKER_REPO }}:frontend-latest -f frontend/Dockerfile-frontend ./frontend
+        docker push ${{ secrets.DOCKER_REPO }}:backend-latest
+        docker push ${{ secrets.DOCKER_REPO }}:frontend-latest
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+        VITE_WS_BASE_URL: ${{ secrets.VITE_WS_BASE_URL }}
+        VITE_ENV: ${{ secrets.VITE_ENV }}
+        REDIS_HOST: ${{ secrets.REDIS_HOST }}
+        REDIS_PORT: ${{ secrets.REDIS_PORT }}
+        DATABASE_USER: ${{ secrets.DATABASE_USER }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+        DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DJANGO_SUPERUSER_USERNAME: ${{ secrets.DJANGO_SUPERUSER_USERNAME }}
+        DJANGO_SUPERUSER_EMAIL: ${{ secrets.DJANGO_SUPERUSER_EMAIL }}
+        DJANGO_SUPERUSER_PASSWORD: ${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
+        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_S3_REGION_NAME: ${{ secrets.AWS_S3_REGION_NAME }}
+        AWS_STORAGE_BUCKET: ${{ secrets.AWS_STORAGE_BUCKET }}
+        AWS_UPLOAD_DIRECTORY: ${{ secrets.AWS_UPLOAD_DIRECTORY }}
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        GEONAMES_USERNAME: ${{ secrets.GEONAMES_USERNAME }}
+
+    - name: Deploy to production server
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.PRODUCTION_SERVER_HOST }}
+        username: ${{ secrets.PRODUCTION_SERVER_USER }}
+        key: ${{ secrets.PRODUCTION_SERVER_SSH_KEY }}
+        port: ${{ secrets.PRODUCTION_SERVER_PORT }}
+        script: |
+          cd ${{ secrets.PRODUCTION_SERVER_PATH }}
+          docker-compose pull
+          docker-compose up -d
