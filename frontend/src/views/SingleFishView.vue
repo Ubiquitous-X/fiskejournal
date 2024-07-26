@@ -74,6 +74,20 @@ export default {
       try {
         const response = await apiClient.get(`/fish/${slug}`);
         fish.value = response.data;
+        if (fish.value) {
+          const formattedDate = formatDate(fish.value.timestamp);
+          const speciesName = fish.value.species.name.toLowerCase();
+          document.title = `Ölunds Fiske - ${fish.value.species.name} fångad i ${fish.value.location} ${formattedDate}`;
+          const descriptionMetaTag = document.querySelector('meta[name="description"]');
+          if (descriptionMetaTag) {
+            descriptionMetaTag.setAttribute('content', `Information om en ${speciesName} som fångades i ${fish.value.location} ${formattedDate}.`);
+          } else {
+            const newMetaTag = document.createElement('meta');
+            newMetaTag.name = 'description';
+            newMetaTag.content = `Information om en ${speciesName} som fångades i ${fish.value.location} ${formattedDate}.`;
+            document.getElementsByTagName('head')[0].appendChild(newMetaTag);
+          }
+        }
       } catch (error) {
         console.error('Fel vid hämtning av fisken:', error);
       } finally {

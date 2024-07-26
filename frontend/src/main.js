@@ -13,6 +13,29 @@ if (import.meta.env.VITE_ENV === 'production') {
 }
 
 const app = createApp(App);
+
+router.beforeEach((to, from, next) => {
+  // Uppdatera titel
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+
+  // Uppdatera meta beskrivning
+  if (to.meta.description) {
+    const descriptionMetaTag = document.querySelector('meta[name="description"]');
+    if (descriptionMetaTag) {
+      descriptionMetaTag.setAttribute('content', to.meta.description);
+    } else {
+      const newMetaTag = document.createElement('meta');
+      newMetaTag.name = 'description';
+      newMetaTag.content = to.meta.description;
+      document.getElementsByTagName('head')[0].appendChild(newMetaTag);
+    }
+  }
+
+  next();
+});
+
 app.use(router);
 app.use(store);
 app.use(Toast, {
