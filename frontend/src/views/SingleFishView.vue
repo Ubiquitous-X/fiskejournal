@@ -69,6 +69,17 @@ export default {
     const isModalVisible = ref(false);
     const selectedImageUrl = ref('');
 
+    const setCanonicalUrl = () => {
+      const existingCanonicalLink = document.querySelector("link[rel='canonical']");
+      if (existingCanonicalLink) {
+        existingCanonicalLink.remove();
+      }
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      link.setAttribute('href', 'https://olundsfiske.se/fiskar');
+      document.head.appendChild(link);
+    };
+
     const fetchFish = async (slug) => {
       loading.value = true;
       try {
@@ -126,6 +137,7 @@ export default {
 
     onMounted(() => {
       fetchFish(route.params.slug);
+      setCanonicalUrl();
     });
 
     return {
