@@ -88,7 +88,7 @@
               <img src="@/assets/gös.png" alt="Gös" class="rounded-xl w-full h-full object-contain">
             </figure>
             <div class="items-center text-center p-2">
-              <div class="text-3xl font-extrabold">{{ fishCounts['Gös'] }}</div>
+              <count-up v-if="Number.isFinite(fishCounts['Gös'])" :endVal="fishCounts['Gös']" :duration="2" class="text-3xl font-extrabold" />
             </div>
           </div>
           <!-- Gäddor -->
@@ -97,7 +97,7 @@
               <img src="@/assets/gädda.png" alt="Gädda" class="rounded-xl w-full h-full object-contain">
             </figure>
             <div class="items-center text-center p-2">
-              <div class="text-3xl font-extrabold">{{ fishCounts['Gädda'] }}</div>
+              <count-up v-if="Number.isFinite(fishCounts['Gädda'])" :endVal="fishCounts['Gädda']" :duration="2" class="text-3xl font-extrabold" />
             </div>
           </div>
           <!-- Abborrar -->
@@ -106,7 +106,7 @@
               <img src="@/assets/abborre.png" alt="Abborre" class="rounded-xl w-full h-full object-contain">
             </figure>
             <div class="items-center text-center p-2">
-              <div class="text-3xl font-extrabold">{{ fishCounts['Abborre'] }}</div>
+              <count-up v-if="Number.isFinite(fishCounts['Abborre'])" :endVal="fishCounts['Abborre']" :duration="2" class="text-3xl font-extrabold" />
             </div>
           </div>
         </div>
@@ -117,11 +117,15 @@
 
 <script>
 import { ref, onMounted } from 'vue';
+import CountUp from 'vue-countup-v3';
 import apiClient from '../api';
 import { useToast } from 'vue-toastification';
 
 export default {
   name: "StatsWidget",
+  components: {
+    CountUp
+  },
   setup() {
     const weatherData = ref(null);
     const fishCounts = ref({
