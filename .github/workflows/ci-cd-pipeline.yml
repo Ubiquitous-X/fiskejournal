@@ -60,5 +60,6 @@ jobs:
         port: ${{ secrets.PRODUCTION_SERVER_PORT }}
         script: |
           cd ${{ secrets.PRODUCTION_SERVER_PATH }}
+          git pull origin main
           docker-compose pull
           docker-compose up -d
