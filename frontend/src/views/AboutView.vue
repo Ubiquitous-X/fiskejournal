@@ -13,13 +13,13 @@
             <div class="w-full space-y-6">
               <h1 class="text-3xl font-semibold lg:text-4xl">Om denna webbapp</h1>
               <p class="text-base mb-4">
-                Det här är ett rent hobbyprojekt för att utforska skapandet av en full stack webbapp för personligt bruk med ett javascript framework för frontend och ett api som backend. Tidigare har jag bara skapat saker med rena Python-ramverk som Django eller Flask och deras respektive templatingsystem. Sidan är helt responsiv och gör sig bra även på små skärmar, mycket tack vare att TailwindCSS är "mobility first" och innehåller bra stöd för detta.
+                Det här är ett rent hobbyprojekt för att utforska skapandet av en full stack webbapp för personligt bruk med ett JavaScript-ramverk för frontend och ett API som backend. Tidigare har jag bara skapat saker med rena Python-ramverk som Django eller Flask och deras respektive templatingsystem. Sidan är helt responsiv och fungerar bra även på små skärmar, mycket tack vare att TailwindCSS är "mobility first" och innehåller bra stöd för detta.
               </p>
               <p class="text-base mb-4">
-                Eftersom detta endast är i självlärande syfte för att skapa mig en bild över hur många och komplexa komponenter en full stack webbapp egentligen består av så har jag inte lagt ner 100% i alla delar. När de varit "good enough" har jag stannat där. Därför går mycket att effektivisera eller förbättra, men för mig uppfyller den sitt syfte gott nog och jag lärde mig mycket på vägen.
+                Eftersom detta endast är i självlärande syfte för att skapa mig en bild av hur många och komplexa komponenter en full stack webbapp egentligen består av, har jag inte lagt ner 100% på alla delar. När de varit "good enough" har jag stannat där. Därför går mycket att effektivisera eller förbättra, men för mig uppfyller den sitt syfte gott nog och jag har lärt mig mycket på vägen.
               </p>
               <p class="text-base mb-4">
-                Vem som helst är fri att använda koden och sätta upp sin egen installation av denna webbapp. Med tiden kommer jag förmodligen gå igenom koden lite nogrannare och se vad som går att göra. Det finns till exempel delar kvar som går att bryta ut i fler Vue-komponenter. Även websockets skulle gå att ge lite mer kärlek och inte minst bättre kommentering av koden.
+                Vem som helst är fri att använda koden och sätta upp sin egen installation av denna webbapp. Med tiden kommer jag förmodligen gå igenom koden lite noggrannare och se vad som går att göra. Det finns till exempel delar kvar som går att bryta ut i fler Vue-komponenter. Även websockets skulle gå att ge lite mer kärlek och inte minst bättre kommentering av koden. Högt på listan står dock att lägga till enhetstester för både frontend och backend i byggflödet.
               </p>
             </div>
           </div>
@@ -35,11 +35,11 @@
               <h3 class="text-lg font-bold mt-4 mb-4">Bakgrundsuppgiften (Celery)</h3>
               <ul class="list-disc list-inside space-y-2">
                 <li>Bakgrundsuppgiften extraherar metadata (tidsstämpel och koordinater).</li>
-                <li>Koordinaterna skickas i ett anrop till Geonames API för att namnsätta platsen på vattnet där fotot är taget.</li>
+                <li>Koordinaterna skickas i ett anrop till Geonames API för att namnge platsen på vattnet där fotot är taget.</li>
                 <li>Koordinaterna används också i ett anrop till Weatherapi API för att hämta aktuell väderdata på platsen för fotot.</li>
-                <li>Orginalbilden konverteras till en liten bild (thumbnail) och en mediumbild som är 800px bred eller hög (beroende på orientering).</li>                
-                <li>Mediumbilden konverteras till en Base64-sträng som skickas till OpenAI API som artbestämmer fisken på bilden.</li>
-                <li>Orginalbilden raderas från servern och de båda konverterade bilderna laddas upp och lagras på Amazon S3 och används för att visa bilderna på sidan.</li>
+                <li>Originalbilden konverteras till en liten bild (thumbnail) och en mediumbild som är 800px bred eller hög (beroende på orientering).</li>                
+                <li>Mediumbilden konverteras till en Base64-sträng som skickas till OpenAI API för att artbestämma fisken på bilden.</li>
+                <li>Originalbilden raderas från servern och de båda konverterade bilderna laddas upp och lagras på Amazon S3 för att visas på sidan.</li>
                 <li>När allt är klart sparas allting i databasen som en ny fisk.</li>
               </ul>
               <h3 class="text-lg font-bold mt-4 mb-4">Administrationspanel</h3>
@@ -76,7 +76,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">TailwindCSS</h1>
                   <p class="mt-3 text-base-content">
-                    Tailwind CSS är ett utility-first CSS-ramverk som används för att snabbt och enkelt skapa responsiva och anpassningsbara användargränssnitt. Tailwind är ett oerhört populärt ramverk med stort community.
+                    TailwindCSS är ett utility-first CSS-ramverk som används för att snabbt och enkelt skapa responsiva och anpassningsbara användargränssnitt. Tailwind är ett oerhört populärt ramverk med ett stort community.
                   </p>
                 </div>
               </div>
@@ -85,7 +85,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">DaisyUI</h1>
                   <p class="mt-3 text-base-content">
-                    DaisyUI är ett plugin för Tailwind CSS som tillhandahåller färdiga komponenter som är enkla att använda och anpassa. Det hjälper till att säkerställa en enhetlig design genom hela applikationen.
+                    DaisyUI är ett plugin för TailwindCSS som tillhandahåller färdiga komponenter som är enkla att använda och anpassa. Det hjälper till att säkerställa en enhetlig design genom hela applikationen.
                   </p>
                 </div>
               </div>
@@ -124,7 +124,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">Django Ninja</h1>
                   <p class="mt-3 text-base-content">
-                    Django Ninja är ett ramverk för att bygga snabba REST-API:er med Django och Python. Det är enkelt att använda och kraftfullt. Med möjligheten att utnyttja Djangos lösning för autentisering "out of the box" gör detta till ett utmärkt val för min backend.
+                    Django Ninja är ett ramverk för att bygga snabba asynkrona REST-API:er med Django och Python. Med inbyggt stöd för autentisering "out of the box" gör detta till ett utmärkt val för min backend. I backend körs API:et på Daphne, en asynkron ASGI-server med stöd för websockets.
                   </p>
                 </div>
               </div>
@@ -133,7 +133,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">PostgreSQL</h1>
                   <p class="mt-3 text-base-content">
-                    PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet, snabbhet och att det fungerar för himla fint tillsammans med Django och Pydantic.
+                    PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet, snabbhet och att det helt enkelt fungerar så himla fint tillsammans med Django och Pydantic.
                   </p>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">Redis</h1>
                   <p class="mt-3 text-base-content">
-                    Redis är en snabb nyckel-värde-databashanterare som jag använder som en broker för Celery och för caching av data för att förbättra prestandan.
+                    Redis är en snabb nyckel-värde-databashanterare som jag använder som en broker för Celery och för caching av data för att förbättra prestandan. Redis används även med websockets för att skicka meddelanden till frontend.
                   </p>
                 </div>
               </div>
@@ -160,7 +160,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">NginX</h1>
                   <p class="mt-3 text-base-content">
-                    NginX är en högpresterande webbserver och reverse proxy-server. Den används för att hantera inkommande webbtrafik och som en proxy mellan klienter och backend-servrar.
+                    NginX är en högpresterande webbserver och reverse proxy-server. Den används för att hantera inkommande webbtrafik och som en proxy mellan klienter och backend-servrar. För SSL-kryptering använder jag certifikat från Let's Encrypt. Framför NginX sitter iptables och fail2ban för att blockera oönskad trafik.
                   </p>
                 </div>
               </div>
@@ -178,7 +178,7 @@
                 <div class="mt-4 md:mx-4 md:mt-0">
                   <h1 class="text-2xl font-semibold">Amazon S3</h1>
                   <p class="mt-3 text-base-content">
-                    Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för att lagra och leverera statiskt innehåll. Dels de uppladdade fotona, men även andra bilder som finns på sidan. S3 har hög tillgänglighet och prestanda.
+                    Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för lagring av de uppladdade fotona och även för lagring av andra statiska bilder på sidan. Det är en mycket stabil CDN med hög prestanda.
                   </p>
                 </div>
               </div>
@@ -203,25 +203,31 @@
               <div>
                 <h3 class="text-xl font-bold mb-2">Manjaro Linux</h3>
                 <p class="text-base mb-4">
-                  För utveckling kör jag Manjaro Linux. Det är en Linuxdistribution baserad på Arch Linux, känd för sin renhet, snabbhet och kraftfulla pakethantering.
+                  Som utvecklingsmiljö kör jag Manjaro Linux. Det är en Linuxdistribution baserad på Arch Linux, känd för sin snabbhet och kraftfulla pakethantering.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">Git</h3>
+                <h3 class="text-xl font-bold mb-2">Git/Github</h3>
                 <p class="text-base mb-4">
-                  Jag använder Git för versionshantering, vilket gör det möjligt att enkelt spåra ändringar i koden.
+                  Jag använder Git för versionshantering, med Github för kodlagring. Det gör det enkelt att jobba med olika grenar och spåra ändringar i koden.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">CI/CD pipeline</h3>
+                <p class="text-base mb-4">
+                  Github Actions används som CI/CD pipeline. Containrarna byggs automatiskt vid kodändring och pushas ut till produktion via Docker Hub.
                 </p>
               </div>
               <div>
                 <h3 class="text-xl font-bold mb-2">Stagingserver i VirtualBox</h3>
                 <p class="text-base mb-4">
-                  Som testserver kör jag en Ubuntu 24.04 i VirtualBox på min utvecklingsdator.
+                  Som testserver kör jag en installation av Ubuntu 24.04 i VirtualBox på min utvecklingsdator. Den hostar en produktionsmiljö på mitt lokala nätverk.
                 </p>
               </div>
               <div>
                 <h3 class="text-xl font-bold mb-2">Produktionsserver DigitalOcean</h3>
                 <p class="text-base mb-4">
-                  Produktionsservern ligger på en VPS på DigitalOcean som kör Ubuntu 24.04.
+                  Produktionsservern körs på Ubuntu 24.04 och ligger på en VPS hos DigitalOcean. Där hanteras även DNS-konfigurationen för domänen.
                 </p>
               </div>
             </div>
@@ -242,25 +248,25 @@
               <div>
                 <h3 class="text-xl font-bold mb-2">Weatherapi API</h3>
                 <p class="text-base mb-4">
-                  Weatherapi används för att hämta väderdata. Det används för att logga aktuella vädret vid fångsttillfället.
+                  Weatherapi API används för att hämta väderdata. Det används för att logga det aktuella vädret vid fångsttillfället och visa väderdata på startsidan.
                 </p>
               </div>
               <div>
                 <h3 class="text-xl font-bold mb-2">Geonames API</h3>
                 <p class="text-base mb-4">
-                  Geonames API används för att utifrån koodinaterna i fotot hämta platsnamnet för vattnet där fisken fångasts.
+                  Geonames API används för att utifrån koordinaterna i fotot hämta platsnamnet för vattnet där fisken fångats.
                 </p>
               </div>
               <div>
                 <h3 class="text-xl font-bold mb-2">OpenAI API</h3>
                 <p class="text-base mb-4">
-                  OpenAI API används för att artbestämma fisken på fotot som jag laddar upp.
+                  OpenAI API används för att artbestämma fisken på fotot som laddas upp. Det är samma API som ChatGPT använder.
                 </p>
               </div>
               <div>
                 <h3 class="text-xl font-bold mb-2">OpenStreetMap</h3>
                 <p class="text-base mb-4">
-                  Kartan som används är OpenStreetMap, en öppen och lättarbetad karta.
+                  Kartan som används är OpenStreetMap, en öppen och lättanvänd karta med god dokumentation och ett kreativt community.
                 </p>
               </div>
             </div>

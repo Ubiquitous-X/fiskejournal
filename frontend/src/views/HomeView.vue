@@ -10,10 +10,10 @@
             Det jag är ute efter att fånga är abborre, gös och gädda.
           </p>
           <p class="text-base mb-4">
-            Det här är ett rent hobbyprojekt för att lära mig mer om att skapa och lansera en full stack webbapp och kombinerar mina två passioner; programmering och fiske.
+            Detta är ett rent hobbyprojekt för att lära mig mer om att skapa och lansera en full stack webbapp och kombinerar mina två passioner; programmering och fiske.
           </p>
           <p class="text-base mb-4">
-            När jag fångar en fisk, så fotar jag den. Fotot laddas automatiskt upp till servern och utifrån datat i fotot hämtas fångstplats, koordinater till kartan, aktuellt väder med mera från olika tjänster.
+            När jag fångar en fisk, fotar jag den. Fotot laddas automatiskt upp till servern och utifrån datat i fotot hämtas fångstplats, koordinater till kartan, aktuellt väder med mera från olika tjänster.
             OpenAI artbestämmer fisken automatiskt och allt sparas i databasen. Detta kombinerar modern teknik med en kärlek för naturen och fisket.
           </p>
           <p class="text-base mb-4">
