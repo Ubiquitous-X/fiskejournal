@@ -1,9 +1,9 @@
 from ninja import Router
 from django.shortcuts import get_object_or_404
-from django.db.models import QuerySet
+from django.db.models import QuerySet, Count
 from ninja.security import django_auth
 from django.views.decorators.csrf import csrf_protect
-from typing import List
+from typing import List, Dict
 from api.models import Fish, FishSpecies, Bait
 from api.schemas import FishCreate, FishOut, FishUpdate
 from core.tasks import delete_fish_images_from_s3
@@ -14,6 +14,17 @@ router = Router()
 def get_all_fish(request) -> QuerySet[Fish]:
     fish_list = Fish.objects.all().order_by('-timestamp')
     return fish_list
+
+@router.get("/paginated", response=List[FishOut])
+def get_paginated_fish(request, offset: int = 0, limit: int = 30):
+    fish_list = Fish.objects.all().order_by('-timestamp')[offset:offset + limit]
+    return list(fish_list)
+
+@router.get("/count", response=Dict[str, int])
+def get_fish_counts(request):
+    fish_counts = Fish.objects.values('species__name').annotate(count=Count('species__name'))
+    counts = {fish['species__name']: fish['count'] for fish in fish_counts}
+    return counts
 
 @router.get("/{slug}", response=FishOut)
 def get_fish(request, slug: str):
