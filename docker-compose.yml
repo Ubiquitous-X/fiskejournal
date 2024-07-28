@@ -129,9 +129,11 @@ services:
     volumes:
       - /home/ubiquitous/nginx/certbot/conf:/etc/letsencrypt
       - /home/ubiquitous/nginx/certbot/www:/var/www/certbot
+      - certbot_letsencrypt:/var/lib/letsencrypt
 
 volumes:
   postgres_data:
   redis_data:
   static_volume:
   frontend-build:
+  certbot_letsencrypt:
