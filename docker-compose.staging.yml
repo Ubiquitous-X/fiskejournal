@@ -23,17 +23,27 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile-backend
+      args:
+        DATABASE_USER: ${DATABASE_USER}
+        DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+        DATABASE_HOST: ${DATABASE_HOST}
+        DATABASE_NAME: ${DATABASE_NAME}
+        DATABASE_URL: postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}
+        DJANGO_ENVIRONMENT: production
+        REDIS_HOST: ${REDIS_HOST}
+        REDIS_PORT: ${REDIS_PORT}
+        SECRET_KEY: ${SECRET_KEY}
+        DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
+        DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
+        DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
+        DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
+        WEATHER_API_KEY: ${WEATHER_API_KEY}
     container_name: backend
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app
       - static_volume:/app/staticfiles
-    environment:
-      - DATABASE_URL=postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}
-      - DJANGO_ENVIRONMENT=production
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PORT=${REDIS_PORT}
     env_file:
       - .env
     depends_on:
@@ -43,15 +53,18 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile-frontend
+      dockerfile: Dockerfile-frontend-staging
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+        VITE_WS_BASE_URL: ${VITE_WS_BASE_URL}
+        VITE_ENV: ${VITE_ENV}
     container_name: frontend
     volumes:
       - ./frontend:/app
       - frontend-build:/app/dist
-    restart: "no"
     env_file:
       - .env
-    command: npm run build
+    restart: "no"
 
   redis:
     image: redis:latest
@@ -66,6 +79,21 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile-backend
+      args:
+        DATABASE_USER: ${DATABASE_USER}
+        DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+        DATABASE_HOST: ${DATABASE_HOST}
+        DATABASE_NAME: ${DATABASE_NAME}
+        DATABASE_URL: postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}
+        DJANGO_ENVIRONMENT: production
+        REDIS_HOST: ${REDIS_HOST}
+        REDIS_PORT: ${REDIS_PORT}
+        SECRET_KEY: ${SECRET_KEY}
+        DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
+        DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
+        DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
+        DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
+        WEATHER_API_KEY: ${WEATHER_API_KEY}
     container_name: celery
     command: celery -A core worker --concurrency=1 --loglevel=info
     depends_on:
@@ -73,9 +101,6 @@ services:
       - redis
     volumes:
       - ./backend:/app
-    environment:
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PORT=${REDIS_PORT}
     env_file:
       - .env
     restart: on-failure

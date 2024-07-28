@@ -1,17 +1,29 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '192.168.1.5', 'ubuntuvm', 'olundsfiske.se']
+ALLOWED_HOSTS = ['ubuntuvm']
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://ubuntuvm", "https://olundsfiske.se"]
-
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://ubuntuvm", "https://olundsfiske.se"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://ubuntuvm"]
 
 STATIC_URL = os.getenv('STATIC_URL', '/static/')
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Loggning för produktion
+SESSION_COOKIE_HTTPONLY = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://ubuntuvm",
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+    "OPTIONS"
+]
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
