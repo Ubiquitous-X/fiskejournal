@@ -53,6 +53,7 @@ services:
     image: ubiquitous1/ubiquitous:frontend-latest
     container_name: frontend
     volumes:
+      - ./frontend:/app
       - frontend-build:/app/dist
     environment:
       - VITE_API_BASE_URL=${VITE_API_BASE_URL}
