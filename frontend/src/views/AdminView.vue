@@ -2,6 +2,7 @@
   <div class="p-4">
     <div class="max-w-6xl mx-auto mt-2 rounded-xl shadow-2xl p-6">
       <!-- Tabs navigation -->
+      <p>Test-text för debug</p>
       <div class="tabs tabs-boxed font-bold">
         <a @click="selectedTab = 'fish'" :class="{'tab-active': selectedTab === 'fish'}" class="tab tab-bordered">Fiskar</a>
         <a @click="selectedTab = 'bait'" :class="{'tab-active': selectedTab === 'bait'}" class="tab tab-bordered">Beten</a>
