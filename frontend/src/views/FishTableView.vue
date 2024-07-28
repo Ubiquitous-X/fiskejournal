@@ -48,11 +48,12 @@
         </tbody>
       </table>
     </div>
+    <div ref="loadMoreTrigger" style="height: 1px;"></div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import apiClient from '../api';
 import moment from 'moment';
 import Spinner from '@/components/Spinner.vue';
@@ -69,20 +70,45 @@ export default {
   },
   setup() {
     const fishes = ref([]);
-    const loading = ref(true);
+    const loading = ref(false);
+    const loadMoreTrigger = ref(null);
     const router = useRouter();
 
-    const fetchFishes = async () => {
+    const loadMoreFishes = async () => {
+      if (loading.value) return;
       loading.value = true;
       try {
-        const response = await apiClient.get('/fish/all');
-        fishes.value = response.data;
+        const response = await apiClient.get('/fish/paginated', { params: { offset: fishes.value.length, limit: 30 } });
+        fishes.value.push(...response.data);
       } catch (error) {
         console.error('Fel vid hämtning av fiskar:', error);
       } finally {
         loading.value = false;
       }
     };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        loadMoreFishes();
+      }
+    }, {
+      root: null,
+      threshold: 0.1
+    });
+
+    onMounted(() => {
+      setCanonicalUrl();
+      if (loadMoreTrigger.value) {
+        observer.observe(loadMoreTrigger.value);
+      }
+      loadMoreFishes();
+    });
+
+    onUnmounted(() => {
+      if (loadMoreTrigger.value) {
+        observer.unobserve(loadMoreTrigger.value);
+      }
+    });
 
     const formatDate = (timestamp) => {
       return moment(timestamp).format('YYYY-MM-DD HH:mm');
@@ -108,17 +134,13 @@ export default {
       document.head.appendChild(link);
     };
 
-    onMounted(() => {
-      setCanonicalUrl();
-      fetchFishes();
-    });
-
     return {
       fishes,
       loading,
       formatDate,
       formatTemperature,
-      openSingleFishView
+      openSingleFishView,
+      loadMoreTrigger
     };
   }
 };

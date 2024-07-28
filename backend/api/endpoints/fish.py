@@ -15,11 +15,15 @@ def get_all_fish(request) -> QuerySet[Fish]:
     fish_list = Fish.objects.all().order_by('-timestamp')
     return fish_list
 
+@router.get("/paginated", response=List[FishOut])
+def get_paginated_fish(request, offset: int = 0, limit: int = 30):
+    fish_list = Fish.objects.all().order_by('-timestamp')[offset:offset + limit]
+    return list(fish_list)
+
 @router.get("/count", response=Dict[str, int])
 def get_fish_counts(request):
     fish_counts = Fish.objects.values('species__name').annotate(count=Count('species__name'))
     counts = {fish['species__name']: fish['count'] for fish in fish_counts}
-
     return counts
 
 @router.get("/{slug}", response=FishOut)
