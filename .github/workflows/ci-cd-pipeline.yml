@@ -69,7 +69,8 @@ jobs:
           cd ${{ secrets.PRODUCTION_SERVER_PATH }}
           git pull origin main
           docker-compose down
-          docker-compose pull
+          # Ersätter 'latest' taggarna med de dynamiska taggarna
           sed -i "s/backend-latest/backend-${{ env.TIMESTAMP }}/g" docker-compose.yml
           sed -i "s/frontend-latest/frontend-${{ env.TIMESTAMP }}/g" docker-compose.yml
+          docker-compose pull
           docker-compose up -d
