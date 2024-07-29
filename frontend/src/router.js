@@ -13,16 +13,28 @@ const routes = [
     path: '/',
     name: 'Hem',
     component: HomeView,
+    meta: {
+      title: 'Ölunds Fiske - Start',
+      description: 'Ölunds Fiske är en webbapp jag skapat som automatiskt loggar mina fångster i realtid med diverse information och placerar ut dem på kartan. Jag fiskar främst gädda, gös och abborre i och runt Mälaren.Välkommen till Ölunds Fiske, logga dina fångster här!'
+    }
   },
   {
     path: '/karta',
     name: 'Karta',
     component: MapView,
+    meta: {
+      title: 'Ölunds Fiske - Karta',
+      description: 'Här visas alla fångster på kartan med information om fiskarna'
+    }
   },
   {
     path: '/fiskar',
     name: 'Fiskar',
     component: FishTableView,
+    meta: {
+      title: 'Ölunds Fiske - Alla fångster',
+      description: 'Här är listan på alla fångade fiskar och information om dessa'
+    }
   },
   {
     path: '/fisk/:slug',
@@ -34,17 +46,29 @@ const routes = [
     path: '/om',
     name: 'Om',
     component: AboutView,
+    meta: {
+      title: 'Ölunds Fiske - Om sidan',
+      description: 'Här ser du information om tekniken bakom webbappen, hur den är skapad och fungerar'
+    }
   },
   {
     path: '/admin',
     name: 'Admin',
     component: AdminView,
-    meta: { requiresAuth: true }
+    meta: { 
+      requiresAuth: true,
+      title: "Ölunds Fiske - Administrationspanel",
+      description: 'Administrationspanelen för databasen' 
+    }
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFoundView',
     component: NotFoundView,
+    meta: {
+      title: "Ölunds Fiske - 404 Bottennapp",
+      description: 'Har du nått den här sidan så har draget landat i vassen'
+    }
   }
 ];
 
