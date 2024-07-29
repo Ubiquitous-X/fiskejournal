@@ -23,16 +23,12 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Get current timestamp
-      id: ts
-      run: echo "TIMESTAMP=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
-
     - name: Build and push Docker images
       run: |
-        docker build -t ${{ secrets.DOCKER_REPO }}:backend-${{ env.TIMESTAMP }} -f backend/Dockerfile-backend ./backend
-        docker build -t ${{ secrets.DOCKER_REPO }}:frontend-${{ env.TIMESTAMP }} -f frontend/Dockerfile-frontend ./frontend
-        docker push ${{ secrets.DOCKER_REPO }}:backend-${{ env.TIMESTAMP }}
-        docker push ${{ secrets.DOCKER_REPO }}:frontend-${{ env.TIMESTAMP }}
+        docker build -t ${{ secrets.DOCKER_REPO }}:backend-latest -f backend/Dockerfile-backend ./backend --no-cache
+        docker build -t ${{ secrets.DOCKER_REPO }}:frontend-latest -f frontend/Dockerfile-frontend ./frontend --no-cache
+        docker push ${{ secrets.DOCKER_REPO }}:backend-latest
+        docker push ${{ secrets.DOCKER_REPO }}:frontend-latest
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
@@ -69,8 +65,7 @@ jobs:
           cd ${{ secrets.PRODUCTION_SERVER_PATH }}
           git pull origin main
           docker-compose down
-          # Ersätter 'latest' taggarna med de dynamiska taggarna
-          sed -i "s/backend-latest/backend-${{ env.TIMESTAMP }}/g" docker-compose.yml
-          sed -i "s/frontend-latest/frontend-${{ env.TIMESTAMP }}/g" docker-compose.yml
-          docker-compose pull
-          docker-compose up -d
+          docker volume rm fiskejournal_frontend-build  # Ta bort den gamla volymen
+          docker volume create fiskejournal_frontend-build  # Skapa en ny volym
+          docker-compose up -d frontend  # Starta bara frontend-containern för att bygga och fylla volymen
+          docker-compose up -d --build  # Starta om alla containrar för att köra den senaste versionen
