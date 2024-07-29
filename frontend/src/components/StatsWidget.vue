@@ -88,7 +88,7 @@
               <img src="@/assets/gös.png" alt="Gös" class="rounded-xl w-full h-full object-contain">
             </figure>
             <div class="items-center text-center p-2">
-              <div class="text-3xl font-extrabold">{{ zanderCount }}</div>
+              <count-up v-if="Number.isFinite(fishCounts['Gös'])" :endVal="fishCounts['Gös']" :duration="2" class="text-3xl font-extrabold" />
             </div>
           </div>
           <!-- Gäddor -->
@@ -97,7 +97,7 @@
               <img src="@/assets/gädda.png" alt="Gädda" class="rounded-xl w-full h-full object-contain">
             </figure>
             <div class="items-center text-center p-2">
-              <div class="text-3xl font-extrabold">{{ pikeCount }}</div>
+              <count-up v-if="Number.isFinite(fishCounts['Gädda'])" :endVal="fishCounts['Gädda']" :duration="2" class="text-3xl font-extrabold" />
             </div>
           </div>
           <!-- Abborrar -->
@@ -106,7 +106,7 @@
               <img src="@/assets/abborre.png" alt="Abborre" class="rounded-xl w-full h-full object-contain">
             </figure>
             <div class="items-center text-center p-2">
-              <div class="text-3xl font-extrabold">{{ perchCount }}</div>
+              <count-up v-if="Number.isFinite(fishCounts['Abborre'])" :endVal="fishCounts['Abborre']" :duration="2" class="text-3xl font-extrabold" />
             </div>
           </div>
         </div>
@@ -117,16 +117,22 @@
 
 <script>
 import { ref, onMounted } from 'vue';
+import CountUp from 'vue-countup-v3';
 import apiClient from '../api';
 import { useToast } from 'vue-toastification';
 
 export default {
   name: "StatsWidget",
+  components: {
+    CountUp
+  },
   setup() {
     const weatherData = ref(null);
-    const pikeCount = ref(0);
-    const perchCount = ref(0);
-    const zanderCount = ref(0);
+    const fishCounts = ref({
+      'Gädaa': 0,
+      'Abborre': 0,
+      'Gös': 0
+    });
     const loading = ref(true);
     const toast = useToast();
 
@@ -143,15 +149,11 @@ export default {
       }
     };
 
-    const fetchFishData = async () => {
+    const fetchFishCounts = async () => {
       loading.value = true;
       try {
-        const response = await apiClient.get('/fish/all');
-        const fishes = response.data;
-
-        pikeCount.value = fishes.filter(fish => fish.species.name === 'Gädda').length;
-        perchCount.value = fishes.filter(fish => fish.species.name === 'Abborre').length;
-        zanderCount.value = fishes.filter(fish => fish.species.name === 'Gös').length;
+        const response = await apiClient.get('/fish/count');
+        fishCounts.value = response.data;
       } catch (error) {
         console.error('Fel vid hämtning av fiskdata:', error);
       } finally {
@@ -170,14 +172,12 @@ export default {
 
     onMounted(() => {
       fetchWeatherData();
-      fetchFishData();
+      fetchFishCounts();
     });
 
     return {
       weatherData,
-      pikeCount,
-      perchCount,
-      zanderCount,
+      fishCounts,
       loading,
       formattedDateDisplay,
       formattedDate
