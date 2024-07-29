@@ -2,6 +2,9 @@ name: Build, Push and Deploy Fiskejournal
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-push:
