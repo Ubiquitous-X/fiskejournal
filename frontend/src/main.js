@@ -15,6 +15,12 @@ if (import.meta.env.VITE_ENV === 'production') {
 const app = createApp(App);
 
 router.beforeEach((to, from, next) => {
+  // Ta bort noindex meta-tagg om den finns
+  const noindexMetaTag = document.querySelector('meta[name="robots"]');
+  if (noindexMetaTag) {
+    noindexMetaTag.remove();
+  }
+
   // Uppdatera titel
   if (to.meta.title) {
     document.title = to.meta.title;

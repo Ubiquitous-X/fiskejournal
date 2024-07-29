@@ -76,6 +76,7 @@ export default {
         fish.value = response.data;
         if (fish.value) {
           const formattedDate = formatDate(fish.value.timestamp);
+          const speciesName = fish.value.species.name.toLowerCase();
           document.title = `Ölunds Fiske - ${fish.value.species.name} fångad i ${fish.value.location} ${formattedDate}`;
           const descriptionMetaTag = document.querySelector('meta[name="description"]');
           if (descriptionMetaTag) {
@@ -85,6 +86,28 @@ export default {
             newMetaTag.name = 'description';
             newMetaTag.content = `Information om en ${speciesName} som fångades i ${fish.value.location} ${formattedDate}.`;
             document.getElementsByTagName('head')[0].appendChild(newMetaTag);
+          }
+
+          // Sätt canonical URL
+          const canonicalLink = document.querySelector('link[rel="canonical"]');
+          if (canonicalLink) {
+            canonicalLink.setAttribute('href', 'https://olundsfiske.se/fiskar');
+          } else {
+            const newCanonicalLink = document.createElement('link');
+            newCanonicalLink.rel = 'canonical';
+            newCanonicalLink.href = 'https://olundsfiske.se/fiskar';
+            document.getElementsByTagName('head')[0].appendChild(newCanonicalLink);
+          }
+
+          // Sätt noindex meta-tagg
+          let robotsMetaTag = document.querySelector('meta[name="robots"]');
+          if (robotsMetaTag) {
+            robotsMetaTag.setAttribute('content', 'noindex');
+          } else {
+            robotsMetaTag = document.createElement('meta');
+            robotsMetaTag.name = 'robots';
+            robotsMetaTag.content = 'noindex';
+            document.getElementsByTagName('head')[0].appendChild(robotsMetaTag);
           }
         }
       } catch (error) {
