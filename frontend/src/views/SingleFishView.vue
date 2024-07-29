@@ -127,10 +127,12 @@ export default {
 
     const goBack = () => {
       const previousRoute = sessionStorage.getItem('previousRoute');
-      if (previousRoute) {
+      const currentHostname = window.location.hostname;
+      // Om besökaren kommer från direktlänk utifrån, omdirigera till /
+      if (previousRoute && new URL(previousRoute, window.location.origin).hostname === currentHostname) {
         router.replace(previousRoute);
       } else {
-        router.back();
+        router.replace('/');
       }
     };
 
