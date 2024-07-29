@@ -18,7 +18,7 @@ services:
       - TZ=Europe/Stockholm
 
   backend:
-    image: ubiquitous1/ubiquitous:backend-latest
+    image: ubiquitous1/ubiquitous:backend-${TIMESTAMP}
     container_name: backend
     ports:
       - "8000:8000"
@@ -50,7 +50,7 @@ services:
         max-file: "3"
 
   frontend:
-    image: ubiquitous1/ubiquitous:frontend-latest
+    image: ubiquitous1/ubiquitous:frontend-${TIMESTAMP}
     container_name: frontend
     volumes:
       - ./frontend:/app
@@ -72,7 +72,7 @@ services:
     restart: always
 
   celery:
-    image: ubiquitous1/ubiquitous:backend-latest
+    image: ubiquitous1/ubiquitous:backend-${TIMESTAMP}
     container_name: celery
     command: celery -A core worker --concurrency=1 --loglevel=info
     depends_on:
