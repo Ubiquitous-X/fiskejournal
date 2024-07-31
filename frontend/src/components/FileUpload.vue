@@ -14,7 +14,6 @@ export default {
   setup() {
     const fileInput = ref(null);
     const toast = useToast();
-    let socket = null;
 
     const handleNotification = (data) => {
       const message = data.message || data.detail || 'Okänt fel';
@@ -69,8 +68,8 @@ export default {
       }
     };
 
-    const connectWebSocket = () => {
-      socket = new WebSocket(import.meta.env.VITE_WS_BASE_URL);
+    onMounted(() => {
+      const socket = new WebSocket(import.meta.env.VITE_WS_BASE_URL);
 
       socket.onmessage = (event) => {
         const data = JSON.parse(event.data);
@@ -81,28 +80,10 @@ export default {
         console.error('WebSocket error:', error);
         toast.error('WebSocket error');
       };
-    };
 
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        if (socket && socket.readyState !== WebSocket.OPEN) {
-          console.log('Reconnecting WebSocket...');
-          connectWebSocket();
-        }
-      }
-    };
-
-    onMounted(() => {
-      connectWebSocket();
-
-      document.addEventListener('visibilitychange', handleVisibilityChange);
-    });
-
-    onUnmounted(() => {
-      if (socket) {
+      onUnmounted(() => {
         socket.close();
-      }
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      });
     });
 
     return {
