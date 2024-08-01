@@ -1,11 +1,13 @@
 # Fiskejournal (olundsfiske.se)
-Denna webbapp förenar mina två passioner: programmering och fiske. Det här är ett rent hobbyprojekt för att lära mig mer om att skapa och lansera en full stack webbapp. Appen är designad för att logga mina fångster mer eller mindre automatiskt utifrån ett uppladdat foto från telefonen.
+Denna webbapp förenar mina två passioner: programmering och fiske. Det är ett rent hobbyprojekt, utformat för att lära mig mer om att skapa och lansera en full-stack webbapp. Appen är designad för att automatiskt logga mina fångster i realtid baserat på ett uppladdat foto från telefonen.
 
-Utifrån datat i fotot hämtas fångstplats, aktuellt väder med mera från olika tjänster. OpenAI artbestämmer fisken automatiskt och allt sparas i databasen. Den kombinerar modern teknik med en kärlek för naturen och fisket.
+Från fotots metadata hämtas fångstplats, aktuellt väder och annan information från olika tjänster. OpenAI artbestämmer fisken automatiskt och allt sparas i databasen. Den kombinerar modern teknik med kärleken till naturen och fisket.
 
-Eftersom detta endast är i självlärande syfte för att skapa mig en bild över hur saker och ting hänger ihop så har jag inte lagt ner 100% i alla delar. När de varit "good enough" har jag stannat där. Därför går mycket att effektivisera eller förbättra, men för mig uppfyller den sitt syfte gott nog och jag lärde mig mycket på vägen. Med tiden kommer jag gå igenom koden lite mera. Det finns till exempel delar kvar som går att bryta ut i fler Vue-komponenter. Även websockets skulle gå att ge lite mer kärlek och mycket annat smått.  
+Eftersom syftet är att förstå antalet och komplexiteten hos komponenter i en full-stack webbapp, har jag inte fördjupat mig i alla detaljer. När en del varit "good enough" har jag stannat där. Det finns mycket som kan effektiviseras eller förbättras, men för mig uppfyller projektet sitt syfte, och jag har lärt mig mycket på vägen.
 
-Du kan se appen igång här: https://olundsfiske.se
+Med tiden kommer jag förmodligen att gå igenom koden mer noggrant och strukturera upp den bättre. Till exempel genom att bryta ut delar i fler Vue-komponenter eller se till att samma funktion inte finns på flera ställen. Det finns flera nödlösningar som jag använt för att få saker att fungera, till exempel websockets och mycket annat, som skulle kunna förbättras.
+
+Du kan se appen live här: https://olundsfiske.se
 
 ## Flödet vid uppladdning av foto
 
@@ -26,7 +28,7 @@ När jag är inloggad visas en ikon för filuppladdning. Jag klickar på ikonen 
 
 ### Administrationspanel
 
-Sidan har en enklare administrationspanel där jag kan redigera objekten i databasen, om till exempel OpenAI inte lyckats artbestämma fisken. Jag kan även lägga in vikt, längd, vilket bete och så vidare om jag skulle vilja.
+Sidan har en enklare administrationspanel där jag kan redigera objekten i databasen, om till exempel OpenAI inte lyckats artbestämma fisken. Jag kan även lägga in vikt, längd, bete och så vidare om jag skulle vilja.
 
 ## Frontend
 
@@ -50,11 +52,11 @@ Leaflet är ett JavaScript-bibliotek för att skapa interaktiva kartor. Det är 
 
 ### Django Ninja
 
-Django Ninja är ett ramverk för att bygga snabba REST-API:er med Django och Python. Det är enkelt att använda och kraftfullt. Med möjligheten att utnyttja Djangos lösning för autentisering "out of the box" gör detta till ett utmärkt val för min backend.
+Django Ninja är ett ramverk för att bygga snabba REST-API med Django och Python. Det är enkelt att använda och kraftfullt. Möjligheten att utnyttja Djangos lösning för autentisering "out of the box" gör detta till ett utmärkt val för min backend.
 
 ### PostgreSQL
 
-PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet, snabbhet och att det fungerar för himla fint tillsammans med Django och Pydantic.
+PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet och snabbhet samt för dess goda funktionalitet tillsammans med Django och Pydantic.
 
 ### Celery
 
@@ -70,30 +72,29 @@ NginX är en högpresterande webbserver och reverse proxy-server. Den används f
 
 ### Amazon S3
 
-Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för att lagra och leverera statiskt innehåll. Dels de uppladdade fotona, men även andra bilder som finns på sidan. S3 har hög tillgänglighet och prestanda.
+Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för lagring av de uppladdade fotona och även för lagring av andra statiska bilder på sidan. Det är en mycket stabil CDN med hög prestanda. 
 
 ### Docker
 
-Allting körs i Docker för att ha isolerade containrar som enkelt kan flyttas mellan olika miljöer.
-
+Docker är en plattform för att utveckla, leverera och köra applikationer i isolerade containrar. Det gör det enkelt att hantera beroenden och säkerställa att applikationen fungerar konsekvent oavsett var den körs. 
 
 ## Externa tjänster
 
 ### Weatherapi API
 
-Weatherapi används för att hämta väderdata. Det används för att logga aktuella vädret vid fångsttillfället.
+Weatherapi API används för att hämta väderdata. Det används för att logga det aktuella vädret vid fångsttillfället och visa väderdata på startsidan. 
 
 ### Geonames API
 
-Geonames API används för att utifrån koodinaterna i fotot hämta platsnamnet för vattnet där fisken fångasts.
+Geonames API används för att utifrån koordinaterna i fotot hämta platsnamnet för vattnet där fisken fångats.
 
 ### OpenAI API
 
-OpenAI API används för att artbestämma fisken på fotot som jag laddar upp.
+OpenAI API används för att artbestämma fisken på fotot som laddas upp.
 
 ### OpenStreetMap
 
-Kartan som används är OpenStreetMap, en öppen och lättarbetad karta.
+Kartan som används är OpenStreetMap, en öppen och lättanvänd karta med god dokumentation och ett kreativt community. 
 
 ## Licens
 
