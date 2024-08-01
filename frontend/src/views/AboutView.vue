@@ -8,7 +8,7 @@
 
       <!-- Om denna webbapp -->
       <section class="mb-8 bg-neutral text-neutral-content p-4 rounded-2xl">
-        <div class="container px-6 py-10 mx-auto">
+        <div class="container px-6 py-6 mx-auto">
           <div class="lg:flex lg:items-center">
             <div class="w-full space-y-6">
               <h1 class="text-3xl font-semibold lg:text-4xl">Om denna webbapp</h1>
