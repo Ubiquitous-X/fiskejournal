@@ -33,6 +33,9 @@
                   </div>
                   <div class="font-semibold mt-1.5 text-center" v-html="`${forecast.day.maxtemp_c} &deg;C`"></div>
                   <div class="text-xs text-center">Vind: {{ (forecast.day.maxwind_kph / 3.6).toFixed(1) }} m/s {{ forecast.day.wind_dir }}</div>
+                  <div class="text-xs text-center">
+                    Tryck: {{ getWeatherForHour(forecast, 10)?.pressure_mb ?? 'N/A' }} hPa
+                  </div>
                 </div>
               </div>
             </div>
@@ -129,7 +132,7 @@ export default {
   setup() {
     const weatherData = ref(null);
     const fishCounts = ref({
-      'Gädaa': 0,
+      'Gädda': 0,
       'Abborre': 0,
       'Gös': 0
     });
@@ -170,6 +173,13 @@ export default {
       return date.split('-').reverse().join('/');
     };
 
+    const getWeatherForHour = (forecastDay, targetHour) => {
+      return forecastDay.hour.find(hourData => {
+        const hourTime = new Date(hourData.time).getHours();
+        return hourTime === targetHour;
+      });
+    };
+
     onMounted(() => {
       fetchWeatherData();
       fetchFishCounts();
@@ -180,8 +190,10 @@ export default {
       fishCounts,
       loading,
       formattedDateDisplay,
-      formattedDate
+      formattedDate,
+      getWeatherForHour
     };
   }
 };
 </script>
+

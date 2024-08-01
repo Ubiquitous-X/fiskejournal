@@ -1,6 +1,11 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
+
+// Läs versionsnummer från package.json
+const packageJson = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'))
 
 export default defineConfig(({ mode }) => {
   return {
@@ -17,6 +22,9 @@ export default defineConfig(({ mode }) => {
         // Extra Rollup build inställningar
       }
     },
+    define: {
+      __APP_VERSION__: JSON.stringify(packageJson.version),
+    },
     server: {
       port: 3000,
       proxy: {
@@ -29,5 +37,5 @@ export default defineConfig(({ mode }) => {
         usePolling: true,
       }
     }
-  }
-})
+  };
+});

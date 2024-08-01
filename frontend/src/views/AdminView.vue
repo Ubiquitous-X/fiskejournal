@@ -2,7 +2,7 @@
   <div class="p-4">
     <div class="max-w-6xl mx-auto mt-2 rounded-xl shadow-2xl p-6">
       <!-- Tabs navigation -->
-      <p>Version 0.2.1b</p>
+      <p class="ml-2 mb-1">v.{{ version }}</p>
       <div class="tabs tabs-boxed font-bold">
         <a @click="selectedTab = 'fish'" :class="{'tab-active': selectedTab === 'fish'}" class="tab tab-bordered">Fiskar</a>
         <a @click="selectedTab = 'bait'" :class="{'tab-active': selectedTab === 'bait'}" class="tab tab-bordered">Beten</a>
@@ -40,9 +40,11 @@ export default defineComponent({
   },
   setup() {
     const selectedTab = ref('fish'); // Starta på tabben 'Fiskar'
+    const version = __APP_VERSION__; // Hämta version från Vite define
 
     return {
       selectedTab,
+      version,
     };
   },
 });
