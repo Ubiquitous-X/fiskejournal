@@ -14,6 +14,10 @@ export default {
   setup() {
     const fileInput = ref(null);
     const toast = useToast();
+    let socket = null;
+    let retryCount = 0; // Håller reda på antalet återanslutningsförsök
+    const maxRetries = 3; // Maximalt antal återanslutningsförsök
+    let socketOpened = false; // Indikator för om socket är öppen
 
     const handleNotification = (data) => {
       const message = data.message || data.detail || 'Okänt fel';
@@ -68,8 +72,18 @@ export default {
       }
     };
 
-    onMounted(() => {
-      const socket = new WebSocket(import.meta.env.VITE_WS_BASE_URL);
+    const connectWebSocket = () => {
+      if (socket) {
+        socket.close(); // Stäng befintlig socket innan vi öppnar en ny
+      }
+
+      socket = new WebSocket(import.meta.env.VITE_WS_BASE_URL);
+
+      socket.onopen = () => {
+        console.log('WebSocket connected');
+        retryCount = 0; // Nollställ återanslutningsräknaren vid lyckad anslutning
+        socketOpened = true; // Indikerar att socket nu är öppen
+      };
 
       socket.onmessage = (event) => {
         const data = JSON.parse(event.data);
@@ -78,12 +92,50 @@ export default {
 
       socket.onerror = (error) => {
         console.error('WebSocket error:', error);
-        toast.error('WebSocket error');
+
+        // Försök återansluta upp till maxRetries gånger
+        if (retryCount < maxRetries) {
+          retryCount++;
+          console.log(`Försöker återansluta WebSocket (${retryCount}/${maxRetries})...`);
+          setTimeout(connectWebSocket, 1000); // Försök igen efter 1 sekund
+        } else {
+          toast.error('Kunde inte ansluta till WebSocket efter flera försök');
+        }
       };
 
-      onUnmounted(() => {
+      socket.onclose = () => {
+        console.log('WebSocket closed');
+        socketOpened = false; // Indikerar att socket nu är stängd
+      };
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        // Återanslut WebSocket om det inte redan är anslutet
+        if (!socketOpened) {
+          connectWebSocket();
+        }
+      } else {
+        // Stäng WebSocket om sidan blir osynlig
+        if (socket && socketOpened) {
+          socket.close();
+        }
+      }
+    };
+
+    onMounted(() => {
+      connectWebSocket(); // Starta WebSocket-anslutning när komponenten monteras
+
+      // Lägg till event listener för att lyssna på synlighetsändringar
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+    });
+
+    onUnmounted(() => {
+      // Stäng WebSocket när komponenten avmonteras, om den är öppen
+      if (socket && socketOpened) {
         socket.close();
-      });
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     });
 
     return {
