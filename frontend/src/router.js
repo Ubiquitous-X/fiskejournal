@@ -14,7 +14,7 @@ const routes = [
     name: 'Hem',
     component: HomeView,
     meta: {
-      title: 'Ölunds Fiske - Start',
+      title: 'Ölunds Fiske',
       description: 'Ölunds Fiske är en webbapp jag skapat som automatiskt loggar mina fångster i realtid med diverse information och placerar ut dem på kartan. Jag fiskar främst gädda, gös och abborre i och runt Mälaren.Välkommen till Ölunds Fiske, logga dina fångster här!'
     }
   },
