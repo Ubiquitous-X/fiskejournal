@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ölunds Fiske</title>
+    <title>Ölunds Fiske</title>      
+    <meta name="description" content="Ölunds Fiske är en webbapp jag skapat som automatiskt loggar mina fångster i realtid med diverse information och placerar ut dem på kartan. Jag fiskar främst gädda, gös och abborre i och runt Mälaren.">
+    <meta name="application-name" content="Ölunds Fiske">
+    <meta name="author" content="Mathias Ölund">
+
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -12,17 +17,33 @@
     <link rel="shortcut icon" href="/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">      
-    <meta name="description" content="Ölunds Fiske är en webbapp jag skapat som automatiskt loggar mina fångster i realtid med diverse information och placerar ut dem på kartan. Jag fiskar främst gädda, gös och abborre i och runt Mälaren.">
-    <meta name="application-name" content="Ölunds Fiske">
-    <meta name="author" content="Mathias Ölund">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Open Graph Meta Tags för social delning -->
     <meta property="og:title" content="Ölunds Fiske">
-    <meta property="og:description" content="En webbapp som automatiskt loggar mina fångster i realtid, med karta och information.">
+    <meta property="og:description" content="En webbapp som automatiskt loggar mina fångade fiskar i realtid, med karta och information.">
     <meta property="og:site_name" content="Ölunds Fiske">
     <meta property="og:image" content="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/kajak_profil.jpg">
     <meta property="og:url" content="https://olundsfiske.se">
     <meta property="og:type" content="website">
+
+    <!-- Twitter card -->
+    <meta name="twitter:title" content="Ölunds Fiske">
+    <meta name="twitter:description" content="En webbapp som automatiskt loggar mina fångade fiskar i realtid, med karta och information.">
+    <meta name="twitter:image" content="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/kajak_profil.jpg">
+
+    <!-- Strukturerad Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mathias Ölund",
+      "url": "https://olundsfiske.se",
+      "image": "https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/kajak_profil.jpg",
+      "description": "Ölunds Fiske är en personlig webbapp som automatiskt loggar fångster i realtid, med karta och information.",
+      "knowsAbout": ["Fiske", "Gädda", "Gös", "Abborre", "Mälaren"]
+    }
+    </script>
   </head>
   <body>
     <noscript>
