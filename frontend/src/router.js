@@ -15,7 +15,7 @@ const routes = [
     component: HomeView,
     meta: {
       title: 'Ölunds Fiske',
-      description: 'Ölunds Fiske är en webbapp jag skapat som automatiskt loggar mina fångster i realtid med diverse information och placerar ut dem på kartan. Jag fiskar främst gädda, gös och abborre i och runt Mälaren.Välkommen till Ölunds Fiske, logga dina fångster här!'
+      description: 'Ölunds Fiske är en webbapp jag skapat som automatiskt loggar mina fångster i realtid med diverse information och placerar ut dem på kartan. Jag fiskar främst gädda, gös och abborre i och runt Mälaren.'
     }
   },
   {
@@ -23,8 +23,8 @@ const routes = [
     name: 'Karta',
     component: MapView,
     meta: {
-      title: 'Ölunds Fiske - Karta',
-      description: 'Här visas alla fångster på kartan med information om fiskarna'
+      title: 'Ölunds Fiske: Karta',
+      description: 'Här på kartan visas alla mina fångster med tillhörande information om fiskarna'
     }
   },
   {
@@ -32,8 +32,8 @@ const routes = [
     name: 'Fiskar',
     component: FishTableView,
     meta: {
-      title: 'Ölunds Fiske - Alla fångster',
-      description: 'Här är listan på alla fångade fiskar och information om dessa'
+      title: 'Ölunds Fiske: Alla fångster',
+      description: 'Här är hela listan på alla mina fångade fiskar sedan appen startade och information om dessa'
     }
   },
   {
@@ -47,7 +47,7 @@ const routes = [
     name: 'Om',
     component: AboutView,
     meta: {
-      title: 'Ölunds Fiske - Om sidan',
+      title: 'Ölunds Fiske: Om sidan',
       description: 'Här ser du information om tekniken bakom webbappen, hur den är skapad och fungerar'
     }
   },
@@ -57,7 +57,7 @@ const routes = [
     component: AdminView,
     meta: { 
       requiresAuth: true,
-      title: "Ölunds Fiske - Administrationspanel",
+      title: "Ölunds Fiske: Administrationspanel",
       description: 'Administrationspanelen för databasen' 
     }
   },
@@ -66,7 +66,7 @@ const routes = [
     name: 'NotFoundView',
     component: NotFoundView,
     meta: {
-      title: "Ölunds Fiske - 404 Bottennapp",
+      title: "Ölunds Fiske: 404 Bottennapp",
       description: 'Har du nått den här sidan så har draget landat i vassen'
     }
   }
