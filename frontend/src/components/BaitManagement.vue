@@ -91,13 +91,18 @@ export default {
     };
 
     const deleteBait = async (baitId) => {
-      try {
-        await apiClient.delete(`/baits/delete/${baitId}`);
-        baits.value = baits.value.filter(bait => bait.id !== baitId);
-        toast.success('Bete raderat!');
-      } catch (error) {
-        console.error('Fel vid radering av bete:', error);
-      }
+      const confirmed = window.confirm("Är du säker på att du vill radera betet?");
+      
+      if (confirmed) {
+        try {
+          await apiClient.delete(`/baits/delete/${baitId}`);
+          baits.value = baits.value.filter(bait => bait.id !== baitId);
+          toast.success('Bete raderat!');
+        } catch (error) {
+          console.error('Fel vid radering av bete:', error);
+          toast.error('Ett fel uppstod vid radering av betet.');
+        }
+      } 
     };
 
     onMounted(fetchBaits);

@@ -245,13 +245,18 @@ export default {
     };
 
     const deleteFish = async (fishId) => {
-      try {
-        await apiClient.delete(`/fish/delete/${fishId}`);
-        fishList.value = fishList.value.filter(fish => fish.id !== fishId);
-        toast.success('Fisk raderad!');
-      } catch (error) {
-        console.error('Fel vid radering av fisk:', error);
-      }
+      const confirmed = window.confirm("Är du säker på att du vill radera fisken?");
+      
+      if (confirmed) {
+        try {
+          await apiClient.delete(`/fish/delete/${fishId}`);
+          fishList.value = fishList.value.filter(fish => fish.id !== fishId);
+          toast.success('Fisk raderad!');
+        } catch (error) {
+          console.error('Fel vid radering av fisk:', error);
+          toast.error('Ett fel uppstod vid radering av fisken.');
+        }
+      } 
     };
 
     const cancelEdit = () => {
