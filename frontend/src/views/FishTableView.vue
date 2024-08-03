@@ -5,8 +5,8 @@
       <table class="table w-full lg:w-3/4 lg:mx-auto">
         <thead>
           <tr>
-            <th>Fisk</th>
-            <th>Fångad</th>
+            <th class="hidden md:table-cell">Fisk</th>
+            <th class="hidden md:table-cell">Fångad</th>
             <th class="hidden md:table-cell">Väder</th>
             <th class="hidden md:table-cell">Lufttemp</th>
             <th class="hidden md:table-cell">Lufttryck</th>
@@ -32,7 +32,12 @@
                 </div>
               </div>
             </td>
-            <td>{{ fish.timestamp ? formatDate(fish.timestamp) : 'Saknas' }}</td>
+            <td>
+            <div>
+              <div>{{ formatDate(fish.timestamp).date }}</div>
+              <div class="text-sm opacity-50">{{ formatDate(fish.timestamp).time }}</div>
+            </div>
+            </td>
             <td class="hidden md:table-cell">
               <WeatherIcon :weatherDescription="fish.weather || 'Saknas'" :weatherIconUrl="fish.weather_icon_url || 'path/to/default/icon.png'" />
             </td>
@@ -49,6 +54,16 @@
       </table>
     </div>
     <div ref="loadMoreTrigger" style="height: 1px;"></div>
+    <div class="max-w-4xl mx-auto flex justify-between items-center mt-4 sm:hidden">
+      <router-link to="/" class="btn btn-ghost">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Till startsidan
+      </router-link>
+      <router-link to="/karta" class="btn btn-ghost flex items-center">
+        Till kartan
+        <i class="fas fa-arrow-right ml-2"></i>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -111,7 +126,10 @@ export default {
     });
 
     const formatDate = (timestamp) => {
-      return moment(timestamp).format('YYYY-MM-DD HH:mm');
+      return {
+        date: moment(timestamp).format('YYYY-MM-DD'),
+        time: moment(timestamp).format('HH:mm')
+      };
     };
 
     const formatTemperature = (temperature) => {
