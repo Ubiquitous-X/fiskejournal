@@ -83,7 +83,7 @@
     </div>
     <div v-if="shouldShowStats">
       <div v-if="showStats" class="stats-widget bg-base-100 text-base-content rounded-lg transition-height duration-300 hidden md:block">
-        <StatsWidget />
+        <InfoPanel />
         <div class="flex justify-center mt-2">
           <button @click="toggleStats" class="btn btn-circle btn-sm">
             <i class="fas fa-chevron-up"></i>
@@ -104,7 +104,7 @@ import { ref, computed, onMounted, watch } from 'vue';
 import ThemeSwitcher from './ThemeSwitcher.vue';
 import LoginIcon from './LoginIcon.vue';
 import FileUpload from './FileUpload.vue';
-import StatsWidget from './StatsWidget.vue';
+import InfoPanel from './InfoPanel.vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -113,7 +113,7 @@ export default {
     ThemeSwitcher,
     LoginIcon,
     FileUpload,
-    StatsWidget
+    InfoPanel
   },
   setup() {
     const store = useStore();
