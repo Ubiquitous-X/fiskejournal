@@ -225,12 +225,25 @@ export default {
     };
 
     const updateFish = async () => {
+      if (!editingFish.value) {
+        return;
+      }
+
       try {
+        // Konvertera tomma strängar till null för numeriska värden
         const payload = { 
           ...editingFish.value, 
           species: editingSpecies.value,
           bait: editingBait.value
         };
+
+        // Kontrollera och konvertera numeriska fält till null om de är tomma strängar
+        Object.keys(payload).forEach(key => {
+          if (payload[key] === '') {
+            payload[key] = null;
+          }
+        });
+
         console.log('Payload:', payload);
         const response = await apiClient.put(`/fish/edit/${editingFish.value.id}`, payload);
         const index = fishList.value.findIndex(f => f.id === editingFish.value.id);
@@ -241,6 +254,7 @@ export default {
         toast.success('Fisk uppdaterad!');
       } catch (error) {
         console.error('Fel vid uppdatering av fisk:', error);
+        toast.error('Ett fel uppstod vid uppdatering av fisken.');
       }
     };
 
