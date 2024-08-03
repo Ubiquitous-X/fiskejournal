@@ -33,7 +33,7 @@
             <p class="mb-2" v-if="fish.uv_index"><strong>UV-index:</strong> {{ Math.round(fish.uv_index) }}</p>
             <p class="mb-2" v-if="fish.moon_phase"><strong>Månfas:</strong> {{ fish.moon_phase }}</p>
             <p class="mb-2" v-if="fish.moon_illumination"><strong>Månbelysning:</strong> {{ fish.moon_illumination }}%</p>
-            <p class="mb-2 mt-4" v-if="fish.description">{{ fish.description }}</p>
+            <p class="mb-2 mt-4 italic" v-if="fish.description">{{ fish.description }}</p>
           </div>
           <div class="flex gap-4 mt-4">
             <button @click="showOnMap" class="btn btn-sm btn-primary">
