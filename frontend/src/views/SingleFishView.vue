@@ -35,22 +35,14 @@
             <p class="mb-2" v-if="fish.moon_illumination"><strong>Månbelysning:</strong> {{ fish.moon_illumination }}%</p>
             <p class="mb-2 mt-4" v-if="fish.description">{{ fish.description }}</p>
           </div>
-          <!-- Första raden med knappen "Visa på kartan" -->
           <div class="flex gap-4 mt-4">
             <button @click="showOnMap" class="btn btn-sm btn-primary">
               <i class="fas fa-map-marker-alt mr-2"></i>
               Visa på kartan
             </button>
-          </div>
-          <!-- Andra raden med knapparna "Redigera" och "Radera" visas endast om användaren är inloggad -->
-          <div class="flex gap-4 mt-2" v-if="isLoggedIn">
             <button @click="editFish(fish)" class="btn btn-sm btn-warning">
               <i class="fas fa-edit mr-2"></i>
               Redigera
-            </button>
-            <button @click="deleteFish(fish.id)" class="btn btn-sm btn-error">
-              <i class="fas fa-trash mr-2"></i>
-              Radera
             </button>
           </div>
         </div>
@@ -58,136 +50,13 @@
       <!-- Formulärkomponent -->
       <transition name="fade">
         <div v-if="editingFish && editingFish.id === fish.id" class="w-full mt-4">
-          <form @submit.prevent="updateFish" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="form-control col-span-1">
-              <label for="species" class="label">
-                <span class="label-text">Art:</span>
-              </label>
-              <select v-model="editingSpecies" id="species" class="select select-bordered w-full">
-                <option v-for="species in fishSpecies" :key="species.id" :value="species.id">{{ species.name }}</option>
-              </select>
-            </div>
-            <div class="form-control col-span-1">
-              <label for="bait" class="label">
-                <span class="label-text">Bete:</span>
-              </label>
-              <select v-model="editingBait" id="bait" class="select select-bordered w-full">
-                <option v-for="bait in fishBaits" :key="bait.id" :value="bait.id">{{ bait.type }}</option>
-              </select>
-            </div>
-            <div class="form-control col-span-1">
-              <label for="weight" class="label">
-                <span class="label-text">Vikt (kg):</span>
-              </label>
-              <input v-model.number="editingFish.weight" id="weight" type="number" step="0.01" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="length" class="label">
-                <span class="label-text">Längd (cm):</span>
-              </label>
-              <input v-model.number="editingFish.length" id="length" type="number" step="0.1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="location" class="label">
-                <span class="label-text">Fångstplats:</span>
-              </label>
-              <input v-model="editingFish.location" id="location" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="weather" class="label">
-                <span class="label-text">Väder:</span>
-              </label>
-              <input v-model="editingFish.weather" id="weather" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="latitude" class="label">
-                <span class="label-text">Latitud:</span>
-              </label>
-              <input v-model.number="editingFish.latitude" id="latitude" type="number" step="0.0001" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="longitude" class="label">
-                <span class="label-text">Longitud:</span>
-              </label>
-              <input v-model.number="editingFish.longitude" id="longitude" type="number" step="0.0001" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="air_temperature" class="label">
-                <span class="label-text">Lufttemperatur (°C):</span>
-              </label>
-              <input v-model.number="editingFish.air_temperature" id="air_temperature" type="number" step="0.1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="air_pressure" class="label">
-                <span class="label-text">Lufttryck (hPa):</span>
-              </label>
-              <input v-model.number="editingFish.air_pressure" id="air_pressure" type="number" step="1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="wind_speed" class="label">
-                <span class="label-text">Vindhastighet (m/s):</span>
-              </label>
-              <input v-model.number="editingFish.wind_speed" id="wind_speed" type="number" step="0.1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="wind_dir" class="label">
-                <span class="label-text">Vindriktning:</span>
-              </label>
-              <input v-model="editingFish.wind_dir" id="wind_dir" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="air_humidity" class="label">
-                <span class="label-text">Luftfuktighet (%):</span>
-              </label>
-              <input v-model.number="editingFish.air_humidity" id="air_humidity" type="number" step="1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="uv_index" class="label">
-                <span class="label-text">UV-index:</span>
-              </label>
-              <input v-model.number="editingFish.uv_index" id="uv_index" type="number" step="0.1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="moon_phase" class="label">
-                <span class="label-text">Månfas:</span>
-              </label>
-              <input v-model="editingFish.moon_phase" id="moon_phase" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="moon_illumination" class="label">
-                <span class="label-text">Månens belysning (%):</span>
-              </label>
-              <input v-model.number="editingFish.moon_illumination" id="moon_illumination" type="number" step="0.1" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="medium_image_url" class="label">
-                <span class="label-text">Medium foto URL:</span>
-              </label>
-              <input v-model="editingFish.medium_image_url" id="medium_image_url" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="thumbnail_image_url" class="label">
-                <span class="label-text">Thumbnail foto URL:</span>
-              </label>
-              <input v-model="editingFish.thumbnail_image_url" id="thumbnail_image_url" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1">
-              <label for="weather_icon_url" class="label">
-                <span class="label-text">Väderikon URL:</span>
-              </label>
-              <input v-model="editingFish.weather_icon_url" id="weather_icon_url" type="text" class="input input-bordered w-full" />
-            </div>
-            <div class="form-control col-span-1 md:col-span-2">
-              <label for="description" class="label">
-                <span class="label-text">Beskrivning:</span>
-              </label>
-              <textarea v-model="editingFish.description" id="description" class="textarea textarea-bordered w-full"></textarea>
-            </div>
-            <div class="col-span-1 md:col-span-2 flex justify-between">
-              <button type="submit" class="btn btn-primary w-1/2 mr-2">Uppdatera</button>
-              <button @click="cancelEdit" class="btn btn-secondary w-1/2">Avbryt</button>
-            </div>
-          </form>
+          <FishForm 
+            :fish="editingFish"
+            :fishSpecies="fishSpecies"
+            :fishBaits="fishBaits"
+            :onUpdate="updateFish"
+            :onCancel="cancelEdit"
+          />
         </div>
       </transition>
       <!-- Ny rad: Beskrivning -->
@@ -205,6 +74,7 @@ import apiClient from '../api';
 import moment from 'moment';
 import Spinner from '@/components/Spinner.vue';
 import ImageModal from '@/components/ImageModal.vue';
+import FishForm from '@/components/FishForm.vue';
 import { useToast } from 'vue-toastification';
 
 export default {
@@ -212,6 +82,7 @@ export default {
   components: {
     Spinner,
     ImageModal,
+    FishForm,
   },
   setup() {
     const route = useRoute();
@@ -321,30 +192,21 @@ export default {
     };
 
     const editFish = (fish) => {
-      editingFish.value = { ...fish };
-      editingSpecies.value = fish.species.id;
-      editingBait.value = fish.bait ? fish.bait.id : null;
+      if (editingFish.value && editingFish.value.id === fish.id) {
+        cancelEdit();
+      } else {
+        editingFish.value = { ...fish };
+        editingSpecies.value = fish.species.id;
+        editingBait.value = fish.bait ? fish.bait.id : null;
+      }
     };
 
-    const updateFish = async () => {
+    const updateFish = async (payload) => {
       if (!editingFish.value) {
         return;
       }
 
       try {
-        const payload = {
-          ...editingFish.value,
-          species: editingSpecies.value,
-          bait: editingBait.value,
-        };
-
-        // Kontrollera och konvertera numeriska fält till null om de är tomma strängar
-        Object.keys(payload).forEach((key) => {
-          if (payload[key] === '') {
-            payload[key] = null;
-          }
-        });
-
         const response = await apiClient.put(`/fish/edit/${editingFish.value.id}`, payload);
         fish.value = response.data;
         editingFish.value = null;
