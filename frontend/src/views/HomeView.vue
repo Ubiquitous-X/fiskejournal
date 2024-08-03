@@ -20,7 +20,7 @@
             Mathias Ölund
           </p>
           <p class="text-sm mb-4">
-            <i>Läs mer om <router-link to="/om" class="text-primary underline">tekniken bakom appen</router-link> eller 
+            <i class="opacity-70">Läs mer om <router-link to="/om" class="text-primary underline">tekniken bakom appen</router-link> eller 
                se koden på <a href="https://github.com/Ubiquitous-X/fiskejournal" class="text-primary underline">Github</a>.
             </i>
           </p>
