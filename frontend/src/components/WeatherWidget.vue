@@ -1,11 +1,11 @@
 <template>
   <!-- Väderkolumnen -->
   <div v-if="weatherData" class="w-full md:w-2/3 lg:w-1/3 p-2">
-    <div class="bg-neutral text-neutral-content h-full rounded-2xl ml-10">
+    <div class="bg-neutral text-neutral-content h-full rounded-2xl ml-20">
       <div class="p-2 h-full">
         <div class="flex flex-col md:flex-row w-full h-full items-start">
           <!-- Dagens väder -->
-          <div class="flex items-start w-full md:w-1/2 mt-1 mb-2 md:mb-0 p-2 lg:pr-4">
+          <div class="flex items-start w-full md:w-1/2 mt-1 mb-2 md:mb-0 lg:pr-4">
             <div>
               <h2 class="font-bold text-lg">{{ formattedDateDisplay(new Date()) }}</h2>
               <div class="flex mt-2 items-center">
@@ -23,9 +23,9 @@
             </div>
           </div>
           <!-- Kommande dagars väder -->
-          <div class="w-full md:w-1/2 p-2 lg:pl-4">
+          <div class="w-full md:w-1/2 p-2">
             <div class="grid grid-cols-2 gap-2">
-              <div class="bg-neutral p-2 h-full rounded-xl flex flex-col items-center" v-for="(forecast, key) in weatherData.forecast.forecastday.slice(1)" :key="key">
+              <div class="bg-neutral h-full rounded-xl flex flex-col items-center" v-for="(forecast, key) in weatherData.forecast.forecastday.slice(1)" :key="key">
                 <div class="text-xs text-center">{{ formattedDate(forecast.date) }}</div>
                 <div class="mx-auto tooltip tooltip-top" :data-tip="forecast.day.condition.text">
                   <img :src="`https:${forecast.day.condition.icon}`" :alt="forecast.day.condition.text" loading="lazy" class="block mx-auto">
