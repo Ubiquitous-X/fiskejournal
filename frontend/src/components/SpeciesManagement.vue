@@ -126,17 +126,22 @@ export default {
     };
 
     const deleteSpecies = async (speciesId) => {
-      try {
-        const response = await apiClient.delete(`/species/delete/${speciesId}`);
-        if (response.data.error) {
-          toast.error(response.data.error);
-        } else {
-          speciesList.value = speciesList.value.filter(species => species.id !== speciesId);
-          toast.success('Fiskarten raderad!');
+      const confirmed = window.confirm("Är du säker på att du vill radera fiskarten?");
+      
+      if (confirmed) {
+        try {
+          const response = await apiClient.delete(`/species/delete/${speciesId}`);
+          
+          if (response.data.error) {
+            toast.error(response.data.error);
+          } else {
+            speciesList.value = speciesList.value.filter(species => species.id !== speciesId);
+            toast.success('Fiskarten raderad!');
+          }
+        } catch (error) {
+          console.error('Fel vid radering av fiskart:', error);
+          toast.error('Ett fel uppstod vid radering av fiskarten.');
         }
-      } catch (error) {
-        console.error('Fel vid radering av fiskart:', error);
-        toast.error('Ett fel uppstod vid radering av fiskarten.');
       }
     };
 

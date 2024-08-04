@@ -1,18 +1,19 @@
 <template>
-  <div class="flex-1 p-4">
+  <div class="flex-1 p-2">
     <Spinner v-if="loading" :marginTop="true" />
     <div class="overflow-x-auto">
       <table class="table w-full lg:w-3/4 lg:mx-auto">
         <thead>
           <tr>
-            <th>Fisk</th>
-            <th>Fångad</th>
+            <th>Fisk och fångstplats</th>
+            <th>Tidpunkt</th>
             <th class="hidden md:table-cell">Väder</th>
             <th class="hidden md:table-cell">Lufttemp</th>
             <th class="hidden md:table-cell">Lufttryck</th>
             <th class="hidden lg:table-cell">Luftfuktighet</th>
             <th class="hidden lg:table-cell">Vind</th>
             <th class="hidden lg:table-cell">UV-index</th>
+            <th class="hidden lg:table-cell">Månbelysning</th>
             <th class="hidden lg:table-cell">Månfas</th>
           </tr>
         </thead>
@@ -21,7 +22,7 @@
             <td>
               <div class="flex items-center gap-3">
                 <div class="avatar">
-                  <div class="mask mask-squircle h-12 w-12 lg:w-14 lg:h-14 lg:mr-2">
+                  <div class="mask rounded-xl h-12 w-12 lg:w-14 lg:h-14 lg:mr-2">
                     <img v-if="fish.thumbnail_image_url" :src="fish.thumbnail_image_url" alt="Fisk" />
                     <span v-else class="flex items-center justify-center h-full w-full bg-base-200 text-base-300">Fisk</span>
                   </div>
@@ -32,7 +33,12 @@
                 </div>
               </div>
             </td>
-            <td>{{ fish.timestamp ? formatDate(fish.timestamp) : 'Saknas' }}</td>
+            <td>
+            <div>
+              <div>{{ formatDate(fish.timestamp).date }}</div>
+              <div class="text-sm opacity-50">{{ formatDate(fish.timestamp).time }}</div>
+            </div>
+            </td>
             <td class="hidden md:table-cell">
               <WeatherIcon :weatherDescription="fish.weather || 'Saknas'" :weatherIconUrl="fish.weather_icon_url || 'path/to/default/icon.png'" />
             </td>
@@ -41,14 +47,25 @@
             <td class="hidden lg:table-cell">{{ fish.air_humidity !== null ? fish.air_humidity + ' %' : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">{{ fish.wind_speed !== null ? Math.round(fish.wind_speed) + ' m/s ' + fish.wind_dir : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">{{ fish.uv_index !== null ? Math.round(fish.uv_index) : 'Saknas' }}</td>
+             <td class="hidden lg:table-cell">{{ fish.moon_illumination !== null ? fish.moon_illumination + ' %' : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">
               <MoonPhase :phase="fish.moon_phase || 'Saknas'" />
-            </td>
+            </td>           
           </tr>
         </tbody>
       </table>
     </div>
     <div ref="loadMoreTrigger" style="height: 1px;"></div>
+    <div class="max-w-4xl mx-auto flex justify-between items-center mt-4 sm:hidden">
+      <router-link to="/" class="btn btn-ghost">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Till startsidan
+      </router-link>
+      <router-link to="/karta" class="btn btn-ghost flex items-center">
+        Till kartan
+        <i class="fas fa-arrow-right ml-2"></i>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -111,7 +128,10 @@ export default {
     });
 
     const formatDate = (timestamp) => {
-      return moment(timestamp).format('YYYY-MM-DD HH:mm');
+      return {
+        date: moment(timestamp).format('YYYY-MM-DD'),
+        time: moment(timestamp).format('HH:mm')
+      };
     };
 
     const formatTemperature = (temperature) => {
