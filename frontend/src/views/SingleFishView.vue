@@ -40,7 +40,7 @@
               <i class="fas fa-map-marker-alt mr-2"></i>
               Visa på kartan
             </button>
-            <button @click="editFish(fish)" class="btn btn-sm btn-warning">
+            <button v-if="isLoggedIn" @click="editFish(fish)" class="btn btn-sm btn-warning">
               <i class="fas fa-edit mr-2"></i>
               Redigera
             </button>
