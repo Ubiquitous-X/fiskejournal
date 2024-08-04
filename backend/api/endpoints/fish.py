@@ -26,6 +26,11 @@ def get_fish_counts(request):
     counts = {fish['species__name']: fish['count'] for fish in fish_counts}
     return counts
 
+@router.get("/latest", response=FishOut)
+def get_latest_fish(request) -> Fish:
+    latest_fish = Fish.objects.order_by('-timestamp').first()
+    return latest_fish
+
 @router.get("/{slug}", response=FishOut)
 def get_fish(request, slug: str):
     fish = get_object_or_404(Fish, slug=slug)

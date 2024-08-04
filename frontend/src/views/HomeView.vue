@@ -1,16 +1,19 @@
 <template>
-  <div class="flex justify-center mt-2">
-    <div class="w-full lg:w-3/4 p-8 rounded-lg bg-base-100 shadow-xl">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="block md:hidden">
+    <InfoPanelSmallScreen />
+  </div>
+  <div class="flex justify-center">
+    <div class="w-full lg:w-3/4 p-7 md:p-8">      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">        
         <div>
-          <h1 class="text-3xl font-semibold lg:text-4xl mb-4">Välkommen!</h1>
+          <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-4">Välkommen till Ölunds Fiske!</h1>
           <p class="text-base mb-4">
-            Det här är en webbapp som jag skapat för att automatiskt logga mina fångster i realtid på mina fisketurer. 
+            Ölunds Fiske är en webbapp som jag skapat för att automatiskt logga mina fångster i realtid på mina fisketurer. 
             Jag fiskar främst i Mälaren och mindre sjöar i och runt Strängnäs, oftast från min upplåsbara fiskekajak, men också tillsammans med vänner. 
             Det jag är ute efter att fånga är abborre, gös och gädda.
           </p>
           <p class="text-base mb-4">
-            Detta är ett rent hobbyprojekt för att lära mig mer om att skapa och lansera en full stack webbapp och kombinerar mina två passioner; programmering och fiske.
+            Detta är ett rent hobbyprojekt för att lära mig mer om att skapa och lansera en full stack webbapp och kombinera mina två passioner; programmering och fiske.
           </p>
           <p class="text-base mb-4">
             När jag fångar en fisk, fotar jag den. Fotot laddas automatiskt upp till servern och utifrån datat i fotot hämtas fångstplats, koordinater till kartan, aktuellt väder med mera från olika tjänster.
@@ -20,7 +23,7 @@
             Mathias Ölund
           </p>
           <p class="text-sm mb-4">
-            <i>Läs mer om <router-link to="/om" class="text-primary underline">tekniken bakom appen</router-link> eller 
+            <i class="opacity-70">Läs mer om <router-link to="/om" class="text-primary underline">tekniken bakom appen</router-link> eller 
                se koden på <a href="https://github.com/Ubiquitous-X/fiskejournal" class="text-primary underline">Github</a>.
             </i>
           </p>
@@ -62,9 +65,13 @@
 
 <script>
 import { defineComponent, onMounted } from 'vue';
+import InfoPanelSmallScreen from '@/components/InfoPanelSmallScreen.vue';
 
 export default defineComponent({
   name: "HomeView",
+  components: {
+    InfoPanelSmallScreen
+  },
   setup() {
     const setCanonicalUrl = () => {
       const existingCanonicalLink = document.querySelector("link[rel='canonical']");
@@ -83,3 +90,4 @@ export default defineComponent({
   }
 });
 </script>
+
