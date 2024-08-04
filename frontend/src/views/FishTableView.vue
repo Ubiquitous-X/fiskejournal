@@ -5,8 +5,8 @@
       <table class="table w-full lg:w-3/4 lg:mx-auto">
         <thead>
           <tr>
-            <th class="hidden md:table-cell">Fisk och fångstplats</th>
-            <th class="hidden md:table-cell">Tidpunkt</th>
+            <th>Fisk och fångstplats</th>
+            <th>Tidpunkt</th>
             <th class="hidden md:table-cell">Väder</th>
             <th class="hidden md:table-cell">Lufttemp</th>
             <th class="hidden md:table-cell">Lufttryck</th>
