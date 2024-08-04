@@ -8,15 +8,15 @@
     </div>
     <Spinner v-if="loading" :marginTop="true" />
     <div v-if="fish" class="max-w-4xl mx-auto flex flex-col gap-4">
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+      <div class="flex flex-col md:flex-row items-center md:items-start">
         <!-- Vänster kolumn: Foto -->
-        <div class="flex justify-center items-center w-full md:w-1/2 p-2 rounded-lg border border-base-300 shadow-xl bg-base-100">
+        <div class="flex justify-center items-center w-full md:w-3/5 p-2 rounded-lg border border-base-300 shadow-xl">
           <img :src="fish.medium_image_url" alt="Bild på (förmodligen) episk fångst" class="w-full h-auto rounded-lg" @click="openModal(fish.medium_image_url)">
         </div>
         <!-- Divider -->
         <div class="divider divider-horizontal md:block hidden"></div>
         <!-- Höger kolumn: Information -->
-        <div class="w-full md:w-1/2 p-4 rounded-lg border border-base-300 shadow-xl bg-base-100">
+        <div class="w-full md:w-2/5 p-4 rounded-lg border border-base-300 shadow-xl">
           <h2 class="text-2xl font-bold">{{ fish.species.name }}</h2>
           <p class="text-sm italic text-gray-500 mb-4">{{ fish.species.latin_name }}</p>
           <div class="text-sm">

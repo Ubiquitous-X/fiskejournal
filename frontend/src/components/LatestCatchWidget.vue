@@ -3,7 +3,7 @@
     <h2 class="font-bold text-lg mt-5">Senaste fångst</h2> 
     <div v-if="latestCatch" class="latest-catch flex items-start">
       <div class="avatar mt-4">
-        <div class="mask rounded-xl h-16 w-16 lg:w-20 lg:h-20 lg:mr-2">
+        <div class="mask rounded-xl h-16 w-16 md:w-20 md:h-20 lg:mr-2">
           <img
             v-if="latestCatch.thumbnail_image_url"
             :src="latestCatch.thumbnail_image_url"
