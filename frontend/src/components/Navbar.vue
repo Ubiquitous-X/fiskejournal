@@ -95,6 +95,9 @@
           <i class="fas fa-chevron-down"></i>
         </button>
       </div>
+      <div v-if="shouldShowStats" class="block md:hidden">
+        <InfoPanelSmallScreen />
+      </div>
     </div>
   </div>
 </template>
@@ -105,6 +108,7 @@ import ThemeSwitcher from './ThemeSwitcher.vue';
 import LoginIcon from './LoginIcon.vue';
 import FileUpload from './FileUpload.vue';
 import InfoPanel from './InfoPanel.vue';
+import InfoPanelSmallScreen from './InfoPanelSmallScreen.vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -113,8 +117,9 @@ export default {
     ThemeSwitcher,
     LoginIcon,
     FileUpload,
-    InfoPanel
-  },
+    InfoPanel,
+    InfoPanelSmallScreen
+},
   setup() {
     const store = useStore();
     const route = useRoute();
