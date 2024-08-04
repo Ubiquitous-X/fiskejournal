@@ -1,6 +1,6 @@
 <template>
     <!-- Antalet fiskar-kolumnen -->
-    <div class="hidden lg:flex lg:w-2/3 p-2 flex-col text-neutral-content">
+    <div class="flex-grow-[2] hidden lg:flex p-2 flex-col text-neutral-content">
       <div class="w-full h-full p-4">
         <div class="flex flex-row w-full h-full">
           <!-- Gösar -->

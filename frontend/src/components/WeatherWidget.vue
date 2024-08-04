@@ -1,6 +1,6 @@
 <template>
     <!-- Väderkolumnen -->
-    <div class="w-full lg:w-1/3 p-2" v-if="weatherData">
+    <div class="w-full md:w-2/3 lg:w-1/3 p-2" v-if="weatherData">
       <div class="bg-neutral text-neutral-content h-full rounded-2xl ml-10">
         <div class="p-2 h-full">
           <div class="flex flex-col md:flex-row w-full h-full items-start">
