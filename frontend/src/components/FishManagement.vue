@@ -5,7 +5,7 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full">
           <div class="flex items-center w-full mb-2 md:mb-0">
             <div class="avatar mr-4">
-              <div class="mask mask-squircle h-12 w-12">
+              <div class="mask rounded-xl h-12 w-12">
                 <img v-if="fish.thumbnail_image_url" :src="fish.thumbnail_image_url" alt="Fisk" />
                 <span v-else class="flex items-center justify-center h-full w-full bg-base-200 text-base-300">Fisk</span>
               </div>

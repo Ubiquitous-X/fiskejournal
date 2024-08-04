@@ -4,7 +4,7 @@
     <p v-if="latestCatch" class="text-xs">{{ formatDate(latestCatch.timestamp) }}</p>
     <div v-if="latestCatch" class="latest-catch flex items-center">
       <div class="avatar mt-4">
-        <div class="mask mask-squircle h-16 w-16 lg:w-18 lg:h-18 lg:mr-2">
+        <div class="mask rounded-xl h-16 w-16 lg:w-18 lg:h-18 lg:mr-2">
           <img v-if="latestCatch.thumbnail_image_url" :src="latestCatch.thumbnail_image_url" alt="Senaste fångst bild" class="cursor-pointer" @click="openSingleFishView(latestCatch.slug)">
           <span v-else class="flex items-center justify-center h-full w-full bg-base-200 text-base-300">Fisk</span>
         </div>

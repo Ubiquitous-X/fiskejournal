@@ -22,7 +22,7 @@
             <td>
               <div class="flex items-center gap-3">
                 <div class="avatar">
-                  <div class="mask mask-squircle h-12 w-12 lg:w-14 lg:h-14 lg:mr-2">
+                  <div class="mask rounded-xl h-12 w-12 lg:w-14 lg:h-14 lg:mr-2">
                     <img v-if="fish.thumbnail_image_url" :src="fish.thumbnail_image_url" alt="Fisk" />
                     <span v-else class="flex items-center justify-center h-full w-full bg-base-200 text-base-300">Fisk</span>
                   </div>
