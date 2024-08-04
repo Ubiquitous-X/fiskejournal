@@ -3,8 +3,7 @@
     <div
       v-if="latestCatch"
       class="flex items-center cursor-pointer"
-      @click="openSingleFishView(latestCatch.slug)"
-    >
+      @click="openSingleFishView(latestCatch.slug)"    >
       <div class="avatar mr-4">
         <div class="mask rounded-xl h-10 w-10">
           <img
@@ -15,10 +14,6 @@
           <span v-else class="flex items-center justify-center h-full w-full bg-base-200 text-base-300">Fisk</span>
         </div>
       </div>
-<!--       <div class="flex flex-col">
-        <p class="font-bold text-sm mb-1">Senaste fångst: {{ formatDate(latestCatch.timestamp) }}</p>
-        <p class="text-xs">En {{ latestCatch.species.name.charAt(0).toLowerCase() + latestCatch.species.name.slice(1) }} fångad i {{ latestCatch.location }}</p>
-      </div> -->
       <div class="flex flex-col">
         <p class="font-bold text-sm mb-1">Senaste fångsten var en {{ latestCatch.species.name.charAt(0).toLowerCase() + latestCatch.species.name.slice(1) }}!</p>
         <p class="text-xs">Fångad i {{ latestCatch.location }} den {{ formatDate(latestCatch.timestamp) }}</p>

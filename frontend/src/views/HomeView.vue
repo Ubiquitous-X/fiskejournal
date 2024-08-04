@@ -1,7 +1,10 @@
 <template>
+  <div class="block md:hidden">
+    <InfoPanelSmallScreen />
+  </div>
   <div class="flex justify-center">
-    <div class="w-full lg:w-3/4 p-8 rounded-lg bg-base-100 shadow-xl">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="w-full lg:w-3/4 p-7 md:p-8">      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">        
         <div>
           <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-4">Välkommen till Ölunds Fiske!</h1>
           <p class="text-base mb-4">
@@ -62,9 +65,13 @@
 
 <script>
 import { defineComponent, onMounted } from 'vue';
+import InfoPanelSmallScreen from '@/components/InfoPanelSmallScreen.vue';
 
 export default defineComponent({
   name: "HomeView",
+  components: {
+    InfoPanelSmallScreen
+  },
   setup() {
     const setCanonicalUrl = () => {
       const existingCanonicalLink = document.querySelector("link[rel='canonical']");
@@ -83,3 +90,4 @@ export default defineComponent({
   }
 });
 </script>
+
