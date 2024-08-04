@@ -13,6 +13,7 @@
             <th class="hidden lg:table-cell">Luftfuktighet</th>
             <th class="hidden lg:table-cell">Vind</th>
             <th class="hidden lg:table-cell">UV-index</th>
+            <th class="hidden lg:table-cell">Månbelysning</th>
             <th class="hidden lg:table-cell">Månfas</th>
           </tr>
         </thead>
@@ -46,9 +47,10 @@
             <td class="hidden lg:table-cell">{{ fish.air_humidity !== null ? fish.air_humidity + ' %' : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">{{ fish.wind_speed !== null ? Math.round(fish.wind_speed) + ' m/s ' + fish.wind_dir : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">{{ fish.uv_index !== null ? Math.round(fish.uv_index) : 'Saknas' }}</td>
+             <td class="hidden lg:table-cell">{{ fish.moon_illumination !== null ? fish.moon_illumination + ' %' : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">
               <MoonPhase :phase="fish.moon_phase || 'Saknas'" />
-            </td>
+            </td>           
           </tr>
         </tbody>
       </table>
