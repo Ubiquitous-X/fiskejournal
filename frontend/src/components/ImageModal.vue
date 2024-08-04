@@ -10,7 +10,13 @@
         </button>
         <img :src="imageUrl" alt="Större bild" class="w-full h-auto rounded-md">
         <div class="absolute bottom-0 left-0 right-0 bg-opacity-75 bg-neutral text-neutral-content p-2 text-center">
-          <p>{{ fish.species.name }} fångad i {{ fish.location }}</p>
+          <p>
+            {{ fish.species.name }} fångad
+            <span v-if="fish.bait">
+              på en {{ fish.bait.type.charAt(0).toLowerCase() + fish.bait.type.slice(1) }}
+            </span>
+            i {{ fish.location }}
+          </p>
           <p class="block sm:inline">{{ formatDate(fish.timestamp) }}</p>
         </div>
       </div>

@@ -11,7 +11,7 @@
       <div class="flex flex-col md:flex-row items-center md:items-start">
         <!-- Vänster kolumn: Foto -->
         <div class="flex justify-center items-center w-full md:w-3/5 p-2 rounded-lg border border-base-300 shadow-xl">
-          <img :src="fish.medium_image_url" alt="Bild på (förmodligen) episk fångst" class="w-full h-auto rounded-lg" @click="openModal(fish.medium_image_url)">
+          <img :src="fish.medium_image_url" alt="Bild på (förmodligen) episk fångst" class="w-full h-auto rounded-lg cursor-pointer" @click="openModal(fish.medium_image_url)">
         </div>
         <!-- Divider -->
         <div class="divider divider-horizontal md:block hidden"></div>
