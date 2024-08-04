@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 p-4">
+  <div class="flex-1 p-2">
     <Spinner v-if="loading" :marginTop="true" />
     <div class="overflow-x-auto">
       <table class="table w-full lg:w-3/4 lg:mx-auto">

@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <div class="w-full lg:w-3/4 p-8 rounded-lg">
+    <div class="w-full lg:w-3/4 p-6 md:p-8 rounded-lg">
       <router-link to="/" exact-active-class="active" class="btn btn-ghost mb-2">
         <i class="fas fa-arrow-left mr-2"></i>
         Tillbaka

@@ -83,7 +83,7 @@
     </div>
     <div v-if="shouldShowStats">
       <div v-if="showStats" class="stats-widget bg-base-100 text-base-content rounded-lg transition-height duration-300 hidden md:block">
-        <InfoPanel />
+        <component :is="infoPanelComponent" />
         <div class="flex justify-center mt-2">
           <button @click="toggleStats" class="btn btn-circle btn-sm">
             <i class="fas fa-chevron-up"></i>
@@ -95,20 +95,15 @@
           <i class="fas fa-chevron-down"></i>
         </button>
       </div>
-      <div v-if="shouldShowStats" class="block md:hidden">
-        <InfoPanelSmallScreen />
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed, onMounted, defineAsyncComponent } from 'vue';
 import ThemeSwitcher from './ThemeSwitcher.vue';
 import LoginIcon from './LoginIcon.vue';
 import FileUpload from './FileUpload.vue';
-import InfoPanel from './InfoPanel.vue';
-import InfoPanelSmallScreen from './InfoPanelSmallScreen.vue';
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 
@@ -116,10 +111,8 @@ export default {
   components: {
     ThemeSwitcher,
     LoginIcon,
-    FileUpload,
-    InfoPanel,
-    InfoPanelSmallScreen
-},
+    FileUpload
+  },
   setup() {
     const store = useStore();
     const route = useRoute();
@@ -131,6 +124,8 @@ export default {
       const routesToShowStats = ['/', '/fiskar'];
       return routesToShowStats.includes(route.path);
     });
+
+    const infoPanelComponent = ref(null);
 
     const toggleDropdown = (event) => {
       event.preventDefault();
@@ -155,10 +150,12 @@ export default {
 
     onMounted(() => {
       loadStatsState();
-    });
-
-    watch(route, () => {
-      loadStatsState();
+      // Kontrollera skärmstorlek och dynamiskt importera InfoPanel
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        infoPanelComponent.value = defineAsyncComponent(() =>
+          import('./InfoPanel.vue')
+        );
+      }
     });
 
     return {
@@ -168,10 +165,11 @@ export default {
       shouldShowStats,
       toggleDropdown,
       closeDropdown,
-      toggleStats
+      toggleStats,
+      infoPanelComponent,
     };
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
