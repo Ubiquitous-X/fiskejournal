@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-center mt-2">
+  <div class="flex justify-center">
     <div class="w-full lg:w-3/4 p-8 rounded-lg">
-      <router-link to="/" exact-active-class="active" class="btn btn-ghost mb-4">
+      <router-link to="/" exact-active-class="active" class="btn btn-ghost mb-2">
         <i class="fas fa-arrow-left mr-2"></i>
         Tillbaka
       </router-link>
@@ -55,7 +55,7 @@
           <div class="lg:flex lg:items-center">
             <div class="w-full lg:w-1/2 space-y-12">
               <div>
-                <h2 class="text-3xl font-semibold text-gray-800 lg:text-4xl dark:text-white">Frontend</h2>
+                <h2 class="text-3xl font-semibold lg:text-4xl">Frontend</h2>
                 <div class="mt-2">
                   <span class="inline-block w-40 h-1 rounded-full bg-blue-500"></span>
                   <span class="inline-block w-3 h-1 ml-1 rounded-full bg-blue-500"></span>
@@ -65,7 +65,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/vue-logo.png" alt="Vue Logo" class="w-12 h-12 md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Vue.js</h1>
+                  <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Vue.js</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     För frontend har jag valt Vue.js. Det är ett välutvecklat JavaScript-ramverk, känt för sin flexibilitet och kraftfulla komponentbaserade arkitektur, vilket gör det idealiskt för att bygga dynamiska webbappar.
                   </p>
@@ -74,7 +76,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/tailwind-logo.png" alt="TailwindCSS Logo" class="w-12 h-12 md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">TailwindCSS</h1>
+                  <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>TailwindCSS</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     TailwindCSS är ett utility-first CSS-ramverk som används för att snabbt och enkelt skapa responsiva och anpassningsbara användargränssnitt. Tailwind är ett oerhört populärt ramverk med ett stort community.
                   </p>
@@ -83,7 +87,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/daisyui-logo.png" alt="DaisyUI Logo" class="w-12 h-12 md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">DaisyUI</h1>
+                  <a href="https://daisyui.com/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>DaisyUI</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     DaisyUI är ett plugin för TailwindCSS som tillhandahåller färdiga komponenter som är enkla att använda och anpassa. Det hjälper till att säkerställa en enhetlig design genom hela applikationen.
                   </p>
@@ -92,7 +98,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/leaflet-logo.png" alt="Leaflet Logo" class="w-12 h-12 md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Leaflet</h1>
+                  <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Leaflet</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     Leaflet är ett JavaScript-bibliotek för att skapa interaktiva kartor. Det är snabbt och enkelt att använda, vilket gör det perfekt för att visa geospatial data i webbapplikationer.
                   </p>
@@ -111,7 +119,7 @@
         <div class="container px-6 py-10 mx-auto">
           <div>
             <div>
-              <h2 class="text-3xl font-semibold text-gray-800 lg:text-4xl dark:text-white">Backend</h2>
+              <h2 class="text-3xl font-semibold lg:text-4xl">Backend</h2>
               <div class="mt-2">
                 <span class="inline-block w-40 h-1 rounded-full bg-red-500"></span>
                 <span class="inline-block w-3 h-1 ml-1 rounded-full bg-red-500"></span>
@@ -122,7 +130,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/django-logo.svg" alt="Django Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Django Ninja</h1>
+                  <a href="https://django-ninja.dev/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Django Ninja</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     Django Ninja är ett ramverk för att bygga snabba asynkrona REST-API:er med Django och Python. Med inbyggt stöd för autentisering "out of the box" gör detta till ett utmärkt val för min backend. I backend körs API:et på Daphne, en asynkron ASGI-server med stöd för websockets.
                   </p>
@@ -131,7 +141,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/postgresql-logo.svg" alt="PostgreSQL Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">PostgreSQL</h1>
+                  <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>PostgreSQL</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet, snabbhet och att det helt enkelt fungerar så himla fint tillsammans med Django och Pydantic.
                   </p>
@@ -140,7 +152,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/celery-logo.svg" alt="Celery Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Celery</h1>
+                  <a href="https://docs.celeryq.dev/en/stable/index.html" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Celery</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     Celery är ett asynkront jobbkösystem som används för att hantera tidskrävande uppgifter i bakgrunden. Det hjälper till att hålla applikationen responsiv genom att flytta uppgifterna för bildhanteringen till bakgrundstasks.
                   </p>
@@ -149,7 +163,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/redis-logo.svg" alt="Redis Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Redis</h1>
+                  <a href="https://redis.io/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Redis</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     Redis är en snabb nyckel-värde-databashanterare som jag använder som en broker för Celery och för caching av data för att förbättra prestandan. Redis används även med websockets för att skicka meddelanden till frontend.
                   </p>
@@ -158,7 +174,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/nginx-logo.svg" alt="NginX Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">NginX</h1>
+                  <a href="https://nginx.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>NginX</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     NginX är en högpresterande webbserver och reverse proxy-server. Den används för att hantera inkommande webbtrafik och som en proxy mellan klienter och backend-servrar. För SSL-kryptering använder jag certifikat från Let's Encrypt. Framför NginX sitter iptables och fail2ban för att blockera oönskad trafik.
                   </p>
@@ -167,7 +185,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/docker-logo.svg" alt="Docker Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Docker</h1>
+                  <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Docker</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     Docker är en plattform för att utveckla, leverera och köra applikationer i isolerade containrar. Det gör det enkelt att hantera beroenden och säkerställa att applikationen fungerar konsekvent oavsett var den körs.
                   </p>
@@ -176,7 +196,9 @@
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/aws-logo.svg" alt="Amazon S3 Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
-                  <h1 class="text-2xl font-semibold">Amazon S3</h1>
+                  <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                    <h1>Amazon S3</h1>
+                  </a>
                   <p class="mt-3 text-base-content">
                     Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för lagring av de uppladdade fotona och även för lagring av andra statiska bilder på sidan. Det är en mycket stabil CDN med hög prestanda.
                   </p>
@@ -192,7 +214,7 @@
         <section class="bg-base-100 p-4 rounded-lg">
           <div class="container px-6 py-10 mx-auto">
             <div>
-              <h2 class="text-3xl font-semibold text-gray-800 lg:text-4xl dark:text-white">Infrastruktur</h2>
+              <h2 class="text-3xl font-semibold lg:text-4xl">Infrastruktur</h2>
               <div class="mt-2">
                 <span class="inline-block w-40 h-1 rounded-full bg-blue-500"></span>
                 <span class="inline-block w-3 h-1 ml-1 rounded-full bg-blue-500"></span>
@@ -201,31 +223,41 @@
             </div>
             <div class="space-y-6 mt-6">
               <div>
-                <h3 class="text-xl font-bold mb-2">Manjaro Linux</h3>
+                <a href="https://manjaro.org/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>Manjaro Linux</h3>
+                </a>
                 <p class="text-base mb-4">
                   Som utvecklingsmiljö kör jag Manjaro Linux. Det är en Linuxdistribution baserad på Arch Linux, känd för sin snabbhet och kraftfulla pakethantering.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">Git/Github</h3>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>Git/Github</h3>
+                </a>
                 <p class="text-base mb-4">
                   Jag använder Git för versionshantering, med Github för kodlagring. Det gör det enkelt att jobba med olika grenar och spåra ändringar i koden.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">CI/CD pipeline</h3>
+                <a href="https://docs.github.com/en/actions" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>CI/CD pipeline</h3>
+                </a>
                 <p class="text-base mb-4">
                   Github Actions används som CI/CD pipeline. Containrarna byggs automatiskt vid kodändring och pushas ut till produktion via Docker Hub.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">Stagingserver i VirtualBox</h3>
+                <a href="https://virtualbox.org/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>Stagingserver i VirtualBox</h3>
+                </a>
                 <p class="text-base mb-4">
                   Som testserver kör jag en installation av Ubuntu 24.04 i VirtualBox på min utvecklingsdator. Den hostar en produktionsmiljö på mitt lokala nätverk.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">Produktionsserver DigitalOcean</h3>
+                <a href="https://www.digitalocean.com/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>Produktionsserver DigitalOcean</h3>
+                </a>
                 <p class="text-base mb-4">
                   Produktionsservern körs på Ubuntu 24.04 och ligger på en VPS hos DigitalOcean. Där hanteras även DNS-konfigurationen för domänen.
                 </p>
@@ -237,7 +269,7 @@
         <section class="bg-base-100 p-4 rounded-lg">
           <div class="container px-6 py-10 mx-auto">
             <div>
-              <h2 class="text-3xl font-semibold text-gray-800 lg:text-4xl dark:text-white">Externa tjänster</h2>
+              <h2 class="text-3xl font-semibold lg:text-4xl">Externa tjänster</h2>
               <div class="mt-2">
                 <span class="inline-block w-40 h-1 rounded-full bg-red-500"></span>
                 <span class="inline-block w-3 h-1 ml-1 rounded-full bg-red-500"></span>
@@ -246,25 +278,33 @@
             </div>
             <div class="space-y-6 mt-6">
               <div>
-                <h3 class="text-xl font-bold mb-2">Weatherapi API</h3>
+                <a href="https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>Weatherapi API</h3>
+                </a>
                 <p class="text-base mb-4">
                   Weatherapi API används för att hämta väderdata. Det används för att logga det aktuella vädret vid fångsttillfället och visa väderdata på startsidan.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">Geonames API</h3>
+                <a href="https://www.geonames.org/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>Geonames API</h3>
+                </a>
                 <p class="text-base mb-4">
                   Geonames API används för att utifrån koordinaterna i fotot hämta platsnamnet för vattnet där fisken fångats.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">OpenAI API</h3>
+                <a href="https://platform.openai.com/docs/overview" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>OpenAI API</h3>
+                </a>
                 <p class="text-base mb-4">
                   OpenAI API används för att artbestämma fisken på fotot som laddas upp. Det är samma API som ChatGPT använder.
                 </p>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2">OpenStreetMap</h3>
+                <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer" class="text-xl font-bold mb-2 text-inherit hover:text-inherit focus:text-inherit">
+                  <h3>OpenStreetMap</h3>
+                </a>
                 <p class="text-base mb-4">
                   Kartan som används är OpenStreetMap, en öppen och lättanvänd karta med god dokumentation och ett kreativt community.
                 </p>
