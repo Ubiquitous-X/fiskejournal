@@ -15,9 +15,13 @@
           <span v-else class="flex items-center justify-center h-full w-full bg-base-200 text-base-300">Fisk</span>
         </div>
       </div>
-      <div class="flex flex-col">
+<!--       <div class="flex flex-col">
         <p class="font-bold text-sm mb-1">Senaste fångst: {{ formatDate(latestCatch.timestamp) }}</p>
         <p class="text-xs">En {{ latestCatch.species.name.charAt(0).toLowerCase() + latestCatch.species.name.slice(1) }} fångad i {{ latestCatch.location }}</p>
+      </div> -->
+      <div class="flex flex-col">
+        <p class="font-bold text-sm mb-1">Senaste fångsten var en {{ latestCatch.species.name.charAt(0).toLowerCase() + latestCatch.species.name.slice(1) }}!</p>
+        <p class="text-xs">Fångad i {{ latestCatch.location }} den {{ formatDate(latestCatch.timestamp) }}</p>
       </div>
     </div>
     <div v-else>
@@ -51,7 +55,7 @@ export default {
     };
 
     const formatDate = (dateString) => {
-      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
       return new Date(dateString).toLocaleDateString('sv-SE', options);
     };
 
