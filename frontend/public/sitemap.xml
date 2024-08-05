@@ -4,24 +4,30 @@
     <loc>https://olundsfiske.se/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2024-07-25</lastmod>
+    <lastmod>2024-08-05</lastmod>
   </url>
   <url>
     <loc>https://olundsfiske.se/fiskar</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-07-25</lastmod>
+    <lastmod>2024-08-05</lastmod>
   </url>
   <url>
     <loc>https://olundsfiske.se/karta</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-07-25</lastmod>
+    <lastmod>2024-08-05</lastmod>
   </url>
   <url>
     <loc>https://olundsfiske.se/om</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-07-25</lastmod>
+    <lastmod>2024-08-05</lastmod>
+  </url>
+  <url>
+    <loc>https://olundsfiske.se/galleri</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-08-05</lastmod>
   </url>
 </urlset>
