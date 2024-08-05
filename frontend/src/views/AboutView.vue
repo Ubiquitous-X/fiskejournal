@@ -126,7 +126,7 @@
                 <span class="inline-block w-1 h-1 ml-1 rounded-full bg-red-500"></span>
               </div>
             </div>
-            <div class="space-y-12 mt-6">
+            <div class="space-y-12 mt-14">
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/django-logo.svg" alt="Django Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
