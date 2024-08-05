@@ -11,24 +11,26 @@
           <i class="fas fa-arrow-left mr-2"></i>
           Tillbaka
         </router-link>
-        <!-- Filter toggles -->
+        <!-- Filter checkboxes -->
         <div class="flex gap-4 justify-start mt-2 sm:mt-0">
           <div v-for="species in speciesList" :key="species" class="flex items-center">
-            <span class="mr-2 text-sm md:text-base">{{ species }}</span>
+            <span class="mr-2 text-sm font-bold">{{ species }}</span>
             <input
               type="checkbox"
-              class="toggle toggle-sm md:toggle-md"
+              class="checkbox checkbox-sm"
               :checked="isSpeciesActive(species)"
               @change="toggleFilter(species)"
             />
           </div>
         </div>
       </div>
+      <!-- Masonry Layout -->
       <div class="masonry-grid">
         <div
           v-for="(fish, index) in filteredFishData"
           :key="fish.id"
-          :class="['masonry-item', getRandomSize(index)]"
+          class="masonry-item"
+          :style="getRandomSize()"
           @click="openModal(fish.medium_image_url, fish)"
         >
           <div
@@ -117,9 +119,32 @@ export default defineComponent({
       return activeFilters.value.has(species);
     };
 
-    const getRandomSize = (index) => {
-      const sizes = ['small', 'medium', 'large'];
-      return sizes[index % sizes.length];
+    // Generera slumpmässig höjd för bilder
+    const getRandomSize = () => {
+      const sizes = {
+        small: [150, 300],
+        medium: [250, 400],
+        large: [350, 500],
+      };
+
+      const screenWidth = window.innerWidth;
+      let heightRange;
+
+      if (screenWidth < 640) {
+        // För små skärmar
+        heightRange = sizes.small;
+      } else if (screenWidth < 1024) {
+        // För medelstora skärmar
+        heightRange = sizes.medium;
+      } else {
+        // För stora skärmar
+        heightRange = sizes.large;
+      }
+
+      const randomHeight =
+        Math.floor(Math.random() * (heightRange[1] - heightRange[0] + 1)) + heightRange[0];
+
+      return { height: `${randomHeight}px` };
     };
 
     const openModal = (url, fish) => {
@@ -197,48 +222,5 @@ export default defineComponent({
 .loading-placeholder {
   background-color: #e5e7eb; /* Ljusgrå bakgrund för laddning */
   position: relative;
-}
-
-/* Mindre bildstorlekar för små skärmar */
-.small {
-  height: 150px;
-}
-
-.medium {
-  height: 230px;
-}
-
-.large {
-  height: 270px;
-}
-
-/* Större bildstorlekar för medelstora skärmar */
-@media (min-width: 640px) {
-  .small {
-    height: 300px;
-  }
-
-  .medium {
-    height: 350px;
-  }
-
-  .large {
-    height: 400px;
-  }
-}
-
-/* Störst bildstorlekar för större skärmar */
-@media (min-width: 1024px) {
-  .small {
-    height: 375px;
-  }
-
-  .medium {
-    height: 450px;
-  }
-
-  .large {
-    height: 500px;
-  }
 }
 </style>
