@@ -10,14 +10,14 @@
         </button>
         <img :src="imageUrl" alt="Större bild" class="w-full h-auto rounded-md">
         <div class="absolute bottom-0 left-0 right-0 bg-opacity-75 bg-neutral text-neutral-content p-2 text-center">
-          <p>
+          <p class="text-sm md:text-base">
             {{ fish.species.name }} fångad
             <span v-if="fish.bait">
               på en {{ fish.bait.type.charAt(0).toLowerCase() + fish.bait.type.slice(1) }}
             </span>
             i {{ fish.location }}
           </p>
-          <p class="block sm:inline">{{ formatDate(fish.timestamp) }}</p>
+          <p class="block sm:inline text-sm">{{ formatDate(fish.timestamp) }}</p>
         </div>
       </div>
     </div>
@@ -40,14 +40,15 @@ export default defineComponent({
       emit('close');
     };
 
-    const formatDate = (timestamp) => {
-      const date = new Date(timestamp);
-      const day = String(date.getDate());
-      const month = String(date.getMonth() + 1);
-      const year = String(date.getFullYear()).slice(-2); // Hämta de sista två siffrorna av året
-      const hours = String(date.getHours()).padStart(2, '0');
-      const minutes = String(date.getMinutes()).padStart(2, '0');
-      return `${day}/${month}-${year} kl.${hours}:${minutes}`;
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      const day = date.getDate();
+      const month = date.toLocaleString('sv-SE', { month: 'long' });
+      const year = date.getFullYear();
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+
+      return `${day} ${month} ${year} ${hours}:${minutes}`;
     };
 
     return {

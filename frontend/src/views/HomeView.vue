@@ -3,7 +3,7 @@
     <InfoPanelSmallScreen />
   </div>
   <div class="flex justify-center">
-    <div class="w-full lg:w-3/4 p-7 md:p-8">      
+    <div class="w-full lg:w-3/4 p-6 lg:p-10 rounded-lg shadow-xl">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">        
         <div>
           <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-4">Välkommen till Ölunds Fiske!</h1>

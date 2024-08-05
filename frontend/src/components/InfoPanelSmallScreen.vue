@@ -16,7 +16,7 @@
       </div>
       <div class="flex flex-col">
         <p class="font-bold text-sm mb-1">Senaste fångsten var en {{ latestCatch.species.name.charAt(0).toLowerCase() + latestCatch.species.name.slice(1) }}!</p>
-        <p class="text-xs">Fångad i {{ latestCatch.location }} den {{ formatDate(latestCatch.timestamp) }}</p>
+        <p class="text-xs">Fångad i {{ latestCatch.location }} {{ formatDate(latestCatch.timestamp) }}</p>
       </div>
     </div>
     <div v-else>
