@@ -8,10 +8,10 @@
 
       <!-- Om denna webbapp -->
       <section class="mb-8 bg-neutral text-neutral-content p-4 rounded-2xl">
-        <div class="container px-6 py-6 mx-auto">
+        <div class="container lg:px-6 md:py-6 mx-auto">
           <div class="lg:flex lg:items-center">
             <div class="w-full space-y-6">
-              <h1 class="text-3xl font-semibold lg:text-4xl">Om denna webbapp</h1>
+              <h1 class="text-2xl lg:text-3xl font-semibold">Om denna webbapp</h1>
               <p class="text-base mb-4">
                 Det här är ett rent hobbyprojekt för att utforska skapandet av en full stack webbapp för personligt bruk med ett JavaScript-ramverk för frontend och ett API som backend. Tidigare har jag bara skapat saker med rena Python-ramverk som Django eller Flask och deras respektive templatingsystem. Sidan är helt responsiv och fungerar bra även på små skärmar, mycket tack vare att TailwindCSS är "mobility first" och innehåller bra stöd för detta.
               </p>
@@ -25,7 +25,7 @@
           </div>
           <!-- DaisyUI Collapse Component -->
           <div tabindex="0" class="collapse collapse-plus border-neutral-content bg-neutral text-neutral-content border mt-6 rounded-lg">
-            <div class="collapse-title text-xl font-bold">Flödet vid uppladdning av foto</div>
+            <div class="collapse-title text-lg md:text-xl font-bold">Flödet vid uppladdning av foto</div>
             <div class="collapse-content text-base">
               <ul class="list-disc list-inside space-y-2">
                 <li>När jag är inloggad visas en ikon för filuppladdning. Jag klickar på ikonen och väljer "Ta foto" (eller väljer ett befintligt från telefonen).</li>
@@ -51,7 +51,7 @@
 
       <!-- Frontend -->
       <section class="bg-base-100 shadow-xl mb-8">
-        <div class="container px-6 py-10 mx-auto">
+        <div class="container px-4 md:px-6 py-6 md:py-10 mx-auto">
           <div class="lg:flex lg:items-center">
             <div class="w-full lg:w-1/2 space-y-12">
               <div>
@@ -116,7 +116,7 @@
 
       <!-- Backend -->
       <section class="bg-base-100 shadow-xl mb-8">
-        <div class="container px-6 py-10 mx-auto">
+        <div class="container px-4 md:px-6 py-10 mx-auto">
           <div>
             <div>
               <h2 class="text-3xl font-semibold lg:text-4xl">Backend</h2>
@@ -126,7 +126,7 @@
                 <span class="inline-block w-1 h-1 ml-1 rounded-full bg-red-500"></span>
               </div>
             </div>
-            <div class="space-y-12 mt-6">
+            <div class="space-y-12 mt-14">
               <div class="md:flex md:items-start md:-mx-4">
                 <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/django-logo.svg" alt="Django Logo" class="w-16 h-auto rounded-lg md:mx-4">
                 <div class="mt-4 md:mx-4 md:mt-0">
@@ -212,7 +212,7 @@
       <!-- Infrastruktur och Övrigt -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <section class="bg-base-100 p-4 rounded-lg">
-          <div class="container px-6 py-10 mx-auto">
+          <div class="container px-4 md:px-6 md:py-10 mx-auto">
             <div>
               <h2 class="text-3xl font-semibold lg:text-4xl">Infrastruktur</h2>
               <div class="mt-2">
@@ -267,7 +267,7 @@
         </section>
 
         <section class="bg-base-100 p-4 rounded-lg">
-          <div class="container px-6 py-10 mx-auto">
+          <div class="container px-4 md:px-6 md:py-10 mx-auto">
             <div>
               <h2 class="text-3xl font-semibold lg:text-4xl">Externa tjänster</h2>
               <div class="mt-2">
