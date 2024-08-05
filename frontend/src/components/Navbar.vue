@@ -25,6 +25,11 @@
               </router-link>
             </li>
             <li>
+              <router-link to="/galleri" exact-active-class="active" @click="closeDropdown">
+                <i class="fas fa-camera mr-2"></i>Galleri
+              </router-link>
+            </li>
+            <li>
               <router-link to="/om" exact-active-class="active" @click="closeDropdown">
                 <i class="fas fa-info-circle mr-2"></i>Om sidan
               </router-link>
@@ -59,6 +64,11 @@
           <li :class="{'border-l border-base-content': $route.path !== '/karta'}">
             <router-link to="/karta" exact-active-class="active">
               <i class="fas fa-map mr-1"></i>Karta
+            </router-link>
+          </li>
+          <li :class="{'border-l border-base-content': $route.path !== '/galleri'}">
+            <router-link to="/galleri" exact-active-class="active">
+              <i class="fas fa-camera mr-1"></i>Galleri
             </router-link>
           </li>
           <li :class="{'border-l border-base-content': $route.path !== '/om'}">

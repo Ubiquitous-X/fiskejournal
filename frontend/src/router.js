@@ -4,6 +4,7 @@ import MapView from '@/views/MapView.vue';
 import FishTableView from '@/views/FishTableView.vue';
 import AboutView from '@/views/AboutView.vue';
 import SingleFishView from '@/views/SingleFishView.vue';
+import GalleryView from '@/views/GalleryView.vue';
 import AdminView from '@/views/AdminView.vue';
 import NotFoundView from '@/views/NotFoundView.vue'
 import store from '@/store';
@@ -49,6 +50,15 @@ const routes = [
     meta: {
       title: 'Ölunds Fiske: Om sidan',
       description: 'Här ser du information om tekniken bakom webbappen, hur den är skapad och fungerar'
+    }
+  },
+  {
+    path: '/galleri',
+    name: 'Galleri',
+    component: GalleryView,
+    meta: {
+      title: 'Ölunds Fiske: Bildgalleri',
+      description: 'Här finns alla foton på alla de fiskar jag fångat'
     }
   },
   {
