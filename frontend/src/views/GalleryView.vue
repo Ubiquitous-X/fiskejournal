@@ -168,8 +168,20 @@ export default defineComponent({
       return `${day} ${month} ${year} ${hours}:${minutes}`;
     };
 
+    const setCanonicalUrl = () => {
+      const existingCanonicalLink = document.querySelector("link[rel='canonical']");
+      if (existingCanonicalLink) {
+        existingCanonicalLink.remove();
+      }
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      link.setAttribute('href', 'https://olundsfiske.se/galleri');
+      document.head.appendChild(link);
+    };
+
     onMounted(() => {
       fetchFishData();
+      setCanonicalUrl();
     });
 
     return {
