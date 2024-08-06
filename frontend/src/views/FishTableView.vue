@@ -45,8 +45,8 @@
             <td class="hidden md:table-cell">{{ fish.air_temperature !== null ? formatTemperature(fish.air_temperature) : 'Saknas' }}</td>
             <td class="hidden md:table-cell">{{ fish.air_pressure !== null ? fish.air_pressure + ' hPa' : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">{{ fish.air_humidity !== null ? fish.air_humidity + ' %' : 'Saknas' }}</td>
-            <td class="hidden lg:table-cell">{{ fish.wind_speed !== null ? Math.round(fish.wind_speed) + ' m/s ' + fish.wind_dir : 'Saknas' }}</td>
-            <td class="hidden lg:table-cell">{{ fish.uv_index !== null ? Math.round(fish.uv_index) : 'Saknas' }}</td>
+            <td class="hidden lg:table-cell">{{ fish.wind_speed !== null ? fish.wind_speed + ' m/s ' + fish.wind_dir : 'Saknas' }}</td>
+            <td class="hidden lg:table-cell">{{ fish.uv_index !== null ? fish.uv_index : 'Saknas' }}</td>
              <td class="hidden lg:table-cell">{{ fish.moon_illumination !== null ? fish.moon_illumination + ' %' : 'Saknas' }}</td>
             <td class="hidden lg:table-cell">
               <MoonPhase :phase="fish.moon_phase || 'Saknas'" />
