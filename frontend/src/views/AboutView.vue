@@ -51,7 +51,7 @@
 
       <!-- Frontend -->
       <section class="bg-base-100 shadow-xl mb-8">
-        <div class="container px-4 md:px-6 py-6 md:py-10 mx-auto">
+        <div class="container px-4 lg:px-16 py-6 md:py-12 mx-auto">
           <div class="lg:flex lg:items-center">
             <div class="w-full lg:w-1/2 space-y-12">
               <div>
@@ -116,93 +116,91 @@
 
       <!-- Backend -->
       <section class="bg-base-100 shadow-xl mb-8">
-        <div class="container px-4 md:px-6 py-10 mx-auto">
+        <div class="container px-4 lg:px-16 py-12 mx-auto">
           <div>
-            <div>
-              <h2 class="text-3xl font-semibold lg:text-4xl">Backend</h2>
-              <div class="mt-2">
-                <span class="inline-block w-40 h-1 rounded-full bg-red-500"></span>
-                <span class="inline-block w-3 h-1 ml-1 rounded-full bg-red-500"></span>
-                <span class="inline-block w-1 h-1 ml-1 rounded-full bg-red-500"></span>
+            <h2 class="text-3xl font-semibold lg:text-4xl">Backend</h2>
+            <div class="mt-2">
+              <span class="inline-block w-40 h-1 rounded-full bg-red-500"></span>
+              <span class="inline-block w-3 h-1 ml-1 rounded-full bg-red-500"></span>
+              <span class="inline-block w-1 h-1 ml-1 rounded-full bg-red-500"></span>
+            </div>
+          </div>
+          <div class="space-y-12 mt-14">
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/django-logo.svg" alt="Django Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://django-ninja.dev/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>Django Ninja</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  Django Ninja är ett ramverk för att bygga snabba asynkrona REST-API:er med Django och Python. Med inbyggt stöd för autentisering "out of the box" gör detta till ett utmärkt val för min backend. I backend körs API:et på Daphne, en asynkron ASGI-server med stöd för websockets.
+                </p>
               </div>
             </div>
-            <div class="space-y-12 mt-14">
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/django-logo.svg" alt="Django Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://django-ninja.dev/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>Django Ninja</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    Django Ninja är ett ramverk för att bygga snabba asynkrona REST-API:er med Django och Python. Med inbyggt stöd för autentisering "out of the box" gör detta till ett utmärkt val för min backend. I backend körs API:et på Daphne, en asynkron ASGI-server med stöd för websockets.
-                  </p>
-                </div>
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/postgresql-logo.svg" alt="PostgreSQL Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>PostgreSQL</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet, snabbhet och att det helt enkelt fungerar så himla fint tillsammans med Django och Pydantic.
+                </p>
               </div>
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/postgresql-logo.svg" alt="PostgreSQL Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>PostgreSQL</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    PostgreSQL är en kraftfull objekt-relationsdatabas med öppen källkod. Jag valde PostgreSQL för dess robusthet, snabbhet och att det helt enkelt fungerar så himla fint tillsammans med Django och Pydantic.
-                  </p>
-                </div>
+            </div>
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/celery-logo.svg" alt="Celery Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://docs.celeryq.dev/en/stable/index.html" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>Celery</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  Celery är ett asynkront jobbkösystem som används för att hantera tidskrävande uppgifter i bakgrunden. Det hjälper till att hålla applikationen responsiv genom att flytta uppgifterna för bildhanteringen till bakgrundstasks.
+                </p>
               </div>
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/celery-logo.svg" alt="Celery Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://docs.celeryq.dev/en/stable/index.html" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>Celery</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    Celery är ett asynkront jobbkösystem som används för att hantera tidskrävande uppgifter i bakgrunden. Det hjälper till att hålla applikationen responsiv genom att flytta uppgifterna för bildhanteringen till bakgrundstasks.
-                  </p>
-                </div>
+            </div>
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/redis-logo.svg" alt="Redis Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://redis.io/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>Redis</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  Redis är en snabb nyckel-värde-databashanterare som jag använder som en broker för Celery och för caching av data för att förbättra prestandan. Redis används även med websockets för att skicka meddelanden till frontend.
+                </p>
               </div>
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/redis-logo.svg" alt="Redis Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://redis.io/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>Redis</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    Redis är en snabb nyckel-värde-databashanterare som jag använder som en broker för Celery och för caching av data för att förbättra prestandan. Redis används även med websockets för att skicka meddelanden till frontend.
-                  </p>
-                </div>
+            </div>
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/nginx-logo.svg" alt="NginX Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://nginx.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>NginX</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  NginX är en högpresterande webbserver och reverse proxy-server. Den används för att hantera inkommande webbtrafik och som en proxy mellan klienter och backend-servrar. För SSL-kryptering använder jag certifikat från Let's Encrypt. Framför NginX sitter iptables och fail2ban för att blockera oönskad trafik.
+                </p>
               </div>
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/nginx-logo.svg" alt="NginX Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://nginx.org/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>NginX</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    NginX är en högpresterande webbserver och reverse proxy-server. Den används för att hantera inkommande webbtrafik och som en proxy mellan klienter och backend-servrar. För SSL-kryptering använder jag certifikat från Let's Encrypt. Framför NginX sitter iptables och fail2ban för att blockera oönskad trafik.
-                  </p>
-                </div>
+            </div>
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/docker-logo.svg" alt="Docker Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>Docker</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  Docker är en plattform för att utveckla, leverera och köra applikationer i isolerade containrar. Det gör det enkelt att hantera beroenden och säkerställa att applikationen fungerar konsekvent oavsett var den körs.
+                </p>
               </div>
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/docker-logo.svg" alt="Docker Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>Docker</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    Docker är en plattform för att utveckla, leverera och köra applikationer i isolerade containrar. Det gör det enkelt att hantera beroenden och säkerställa att applikationen fungerar konsekvent oavsett var den körs.
-                  </p>
-                </div>
-              </div>
-              <div class="md:flex md:items-start md:-mx-4">
-                <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/aws-logo.svg" alt="Amazon S3 Logo" class="w-16 h-auto rounded-lg md:mx-4">
-                <div class="mt-4 md:mx-4 md:mt-0">
-                  <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
-                    <h1>Amazon S3</h1>
-                  </a>
-                  <p class="mt-3 text-base-content">
-                    Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för lagring av de uppladdade fotona och även för lagring av andra statiska bilder på sidan. Det är en mycket stabil CDN med hög prestanda.
-                  </p>
-                </div>
+            </div>
+            <div class="md:flex md:items-start md:-mx-4">
+              <img src="https://fiskeapp.s3.eu-north-1.amazonaws.com/assets/aws-logo.svg" alt="Amazon S3 Logo" class="w-16 h-auto rounded-lg md:mx-4">
+              <div class="mt-4 md:mx-4 md:mt-0">
+                <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener noreferrer" class="text-2xl font-semibold text-inherit hover:text-inherit focus:text-inherit">
+                  <h1>Amazon S3</h1>
+                </a>
+                <p class="mt-3 text-base-content">
+                  Amazon S3 är en skalbar lagringslösning från Amazon Web Services (AWS). Jag använder S3 för lagring av de uppladdade fotona och även för lagring av andra statiska bilder på sidan. Det är en mycket stabil CDN med hög prestanda.
+                </p>
               </div>
             </div>
           </div>
