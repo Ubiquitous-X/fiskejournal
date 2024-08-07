@@ -16,10 +16,10 @@
                 Det här är ett rent hobbyprojekt för att utforska skapandet av en full stack webbapp för personligt bruk med ett JavaScript-ramverk för frontend och ett API som backend. Tidigare har jag bara skapat saker med rena Python-ramverk som Django eller Flask och deras respektive templatingsystem. Sidan är helt responsiv och fungerar bra även på små skärmar, mycket tack vare att TailwindCSS är "mobility first" och innehåller bra stöd för detta.
               </p>
               <p class="text-base mb-4">
-                Eftersom detta endast är i självlärande syfte för att skapa mig en bild av hur många och komplexa komponenter en full stack webbapp egentligen består av, har jag inte lagt ner 100% på alla delar. När de varit "good enough" har jag stannat där. Därför går mycket att effektivisera eller förbättra, men för mig uppfyller den sitt syfte gott nog och jag har lärt mig mycket på vägen.
+                Eftersom syftet för mig har varit att få en överblick över antalet komponenter och komplexiteten i en full-stack webbapp, har jag inte fördjupat mig i de enskilda delarna. När jag fått något att funka med någon nödlösning har jag låtit det vara "good enough". Därför kan det mesta effektiviseras eller förbättras, men för mig uppfyller projektet sitt syfte och jag har lärt mig mycket på vägen.
               </p>
               <p class="text-base mb-4">
-                Vem som helst är fri att använda koden och sätta upp sin egen installation av denna webbapp. Med tiden kommer jag förmodligen gå igenom koden lite noggrannare och se vad som går att göra. Det finns till exempel delar kvar som går att bryta ut i fler Vue-komponenter. Även websockets skulle gå att ge lite mer kärlek och inte minst bättre kommentering av koden. Högt på listan står dock att lägga till enhetstester för både frontend och backend i byggflödet.
+                Vem som helst är fri att använda koden och sätta upp sin egen installation av denna webbapp. Med tiden kommer jag förmodligen att gå igenom koden mer noggrant och strukturera upp den bättre och få bort en hel del repetitiv och stökig kod. Dockerfilerna har jag fått att funka i min uppsättning och låter dessa bero, men de behöver nog justeras en hel del för en annan installation.
               </p>
             </div>
           </div>

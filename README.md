@@ -3,9 +3,9 @@ Denna webbapp förenar mina två passioner: programmering och fiske. Det är ett
 
 Från fotots metadata hämtas fångstplats, aktuellt väder och annan information från olika tjänster. OpenAI artbestämmer fisken automatiskt och allt sparas i databasen. Den kombinerar modern teknik med kärleken till naturen och fisket.
 
-Eftersom syftet är att förstå antalet och komplexiteten hos komponenter i en full-stack webbapp, har jag inte fördjupat mig i alla detaljer. När en del varit "good enough" har jag stannat där. Det finns mycket som kan effektiviseras eller förbättras, men för mig uppfyller projektet sitt syfte, och jag har lärt mig mycket på vägen.
+Eftersom syftet för mig har varit att få en överblick över antalet komponenter och komplexiteten i en full-stack webbapp, har jag inte fördjupat mig i de enskilda delarna. När jag fått något att funka med någon nödlösning har jag låtit det vara "good enough". Därför kan det mesta effektiviseras eller förbättras, men för mig uppfyller projektet sitt syfte och jag har lärt mig mycket på vägen.
 
-Med tiden kommer jag förmodligen att gå igenom koden mer noggrant och strukturera upp den bättre. Till exempel genom att bryta ut delar i fler Vue-komponenter eller se till att samma funktion inte finns på flera ställen. Det finns flera nödlösningar som jag använt för att få saker att fungera, till exempel websockets och mycket annat, som skulle kunna förbättras.
+Med tiden kommer jag förmodligen att gå igenom koden mer noggrant och strukturera upp den bättre och få bort en hel del repetitiv och stökig kod. Dockerfilerna har jag fått att funka i min uppsättning och låter dessa bero, men de behöver nog justeras en hel del för en annan installation. 
 
 Du kan se appen live här: https://olundsfiske.se
 
